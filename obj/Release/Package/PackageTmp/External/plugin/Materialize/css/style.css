@@ -1,0 +1,277 @@
+﻿/* 自訂網頁字型 */
+html {
+    font-family: "Roboto", sans-serif, "Microsoft JhengHei", "Microsoft YaHei", Arial, PMingLiU, Verdana !important;
+}
+
+body{
+	background-color: #fcfcfc;
+}
+
+/**
+ * Sticky footer 修改版
+ * 當Content高度不足時,footer自動置底
+ * 
+ * .page-flexbox-wrapper:設定容器
+ * #main:設定內容
+ */
+.page-flexbox-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#main {
+    flex: 1 1 auto;
+}
+
+
+/**
+ * [複寫] - header的Logo
+ * 調整Logo Padding
+ */
+.brand-logo {
+    padding-top: 5px !important;
+}
+
+
+/**
+ * [複寫] - Breadcrumb
+ */
+.breadcrumb {
+    padding: 0px;
+    margin: 15px 0px;
+    list-style: none;
+    font-size: 15px;
+}
+
+.breadcrumbs-title {
+    font-size: 1.5rem;
+    line-height: 1.804rem;
+    margin: 18px 0px 0px 0px;
+}
+
+.breadcrumb > li {
+    display: inline-block;
+}
+
+.breadcrumb a {
+    color: #00838f;
+}
+
+.breadcrumb:before {
+    display: none;
+}
+
+.breadcrumb .active {
+    font-weight: normal;
+    color: #999;
+}
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+
+h5.breadcrumbs-header {
+    font-size: 1.64rem;
+    line-height: 1.804rem;
+    margin: 1.5rem 0 0 0;
+}
+
+.breadcrumbs-nav {
+    margin: 8px 0 9px 0;
+}
+
+
+/**
+ * [複寫] - footer
+ */
+footer.page-footer {
+    padding-top: 0px;
+}
+
+/**
+ * [複寫] - toast
+ */
+@media only screen and (min-width : 601px) and (max-width : 1260px) {
+    .toast {
+        width: 100%;
+        border-radius: 0;
+    }
+}
+
+@media only screen and (min-width : 1261px) {
+    .toast {
+        width: 100%;
+        border-radius: 0;
+    }
+}
+
+@media only screen and (min-width : 601px) and (max-width : 1260px) {
+    #toast-container {
+        min-width: 100%;
+        bottom: 0%;
+        top: 90%;
+        right: 0%;
+        left: 0%;
+    }
+}
+
+@media only screen and (min-width : 1261px) {
+    #toast-container {
+        min-width: 100%;
+        bottom: 0%;
+        top: 90%;
+        right: 0%;
+        left: 0%;
+    }
+}
+
+
+/**
+ * 自定義Css
+ * header, footer的背景色
+ */
+.pkColor {
+    background-color: #005758 !important;
+}
+
+/**
+ * 自定義Css
+ * 全域設定
+ */
+body {
+    background-color: #fcfcfc;
+}
+
+.margin {
+    margin: 0;
+}
+
+#input-select .input-field label {
+    position: absolute;
+    top: -14px;
+    font-size: 0.8rem;
+}
+
+.container {
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    max-width: 100% !important;
+    width: 98%;
+}
+
+
+#content .container .row {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 98%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .container {
+        width: 98%;
+    }
+}
+
+
+#main, footer {
+    padding-left: 240px;
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    #main,
+    footer {
+        padding-left: 0px;
+    }
+}
+
+ul.side-nav.fixed {
+    top: 64px;
+}
+
+@media only screen and (max-width: 992px) {
+    ul.side-nav.fixed {
+        top: 64px;
+    }
+}
+
+
+h4.form-header {
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+
+/**
+ * 自定義Css
+ * Label
+ */
+.label {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    text-shadow: none !important;
+    padding: 6px 7px 6px 7px !important;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.label-default {
+    background-color: #abbac3;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #abbac3), color-stop(100%, #abbac3));
+    background-image: -webkit-linear-gradient(top, #abbac3, #abbac3);
+    background-image: -moz-linear-gradient(top, #abbac3, #abbac3);
+    background-image: -ms-linear-gradient(top, #abbac3, #abbac3);
+    background-image: -o-linear-gradient(top, #abbac3, #abbac3);
+    background-image: linear-gradient(top, #abbac3, #abbac3);
+}
+
+.label-success {
+    background-color: #82af6f;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #82af6f), color-stop(100%, #82af6f));
+    background-image: -webkit-linear-gradient(top, #82af6f, #82af6f);
+    background-image: -moz-linear-gradient(top, #82af6f, #82af6f);
+    background-image: -ms-linear-gradient(top, #82af6f, #82af6f);
+    background-image: -o-linear-gradient(top, #82af6f, #82af6f);
+    background-image: linear-gradient(top, #82af6f, #82af6f);
+}
+
+.label-danger {
+    background-color: #d15b47;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d15b47), color-stop(100%, #d15b47));
+    background-image: -webkit-linear-gradient(top, #d15b47, #d15b47);
+    background-image: -moz-linear-gradient(top, #d15b47, #d15b47);
+    background-image: -ms-linear-gradient(top, #d15b47, #d15b47);
+    background-image: -o-linear-gradient(top, #d15b47, #d15b47);
+    background-image: linear-gradient(top, #d15b47, #d15b47);
+}
+
+.label-warning {
+    background-color: #f89406;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f89406), color-stop(100%, #f89406));
+    background-image: -webkit-linear-gradient(top, #f89406, #f89406);
+    background-image: -moz-linear-gradient(top, #f89406, #f89406);
+    background-image: -ms-linear-gradient(top, #f89406, #f89406);
+    background-image: -o-linear-gradient(top, #f89406, #f89406);
+    background-image: linear-gradient(top, #f89406, #f89406);
+}
+
+.label-info {
+    background-color: #32c2cd;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #32c2cd), color-stop(100%, #32c2cd));
+    background-image: -webkit-linear-gradient(top, #32c2cd, #32c2cd);
+    background-image: -moz-linear-gradient(top, #32c2cd, #32c2cd);
+    background-image: -ms-linear-gradient(top, #32c2cd, #32c2cd);
+    background-image: -o-linear-gradient(top, #32c2cd, #32c2cd);
+    background-image: linear-gradient(top, #32c2cd, #32c2cd);
+}

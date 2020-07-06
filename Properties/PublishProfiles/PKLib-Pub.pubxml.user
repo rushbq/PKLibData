@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+此檔案是由您 Web 專案的發行/封裝處理程序所使用。您可以編輯此 MSBuild 檔案，
+以自訂此處理程序的行為。若要深入了解，請造訪 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\_MyWork\_Prokits\寶工測試站\PKLibrary-Pub</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/PKLibrary-Data.dll">
+      <publishTime>02/15/2017 14:44:19</publishTime>
+    </File>
+    <File Include="bin/PKLibrary-Method.dll">
+      <publishTime>02/15/2017 11:27:04</publishTime>
+    </File>
+    <File Include="bin/PKLibrary.dll">
+      <publishTime>10/21/2016 14:39:49</publishTime>
+    </File>
+    <File Include="External/Default.aspx">
+      <publishTime>11/22/2016 11:41:56</publishTime>
+    </File>
+    <File Include="External/MasterPage.Master">
+      <publishTime>10/20/2016 15:30:41</publishTime>
+    </File>
+    <File Include="External/myProducts/ProdList.aspx">
+      <publishTime>10/20/2016 15:28:05</publishTime>
+    </File>
+    <File Include="External/myProducts/ProdView.aspx">
+      <publishTime>10/20/2016 15:22:01</publishTime>
+    </File>
+    <File Include="External/myUpload/upload.aspx">
+      <publishTime>02/15/2017 14:40:57</publishTime>
+    </File>
+    <File Include="External/plugin/dataTables/dataTables.bootstrap.min.css">
+      <publishTime>10/03/2016 11:54:22</publishTime>
+    </File>
+    <File Include="External/plugin/dataTables/dataTables.bootstrap.min.js">
+      <publishTime>10/03/2016 11:54:22</publishTime>
+    </File>
+    <File Include="External/plugin/dataTables/jquery.dataTables.min.css">
+      <publishTime>10/03/2016 11:54:22</publishTime>
+    </File>
+    <File Include="External/plugin/dataTables/jquery.dataTables.min.js">
+      <publishTime>10/03/2016 11:54:22</publishTime>
+    </File>
+    <File Include="External/plugin/dataTables/_v1.10.11.txt">
+      <publishTime>10/03/2016 11:54:22</publishTime>
+    </File>
+    <File Include="External/plugin/jQuery/2.2.2.txt">
+      <publishTime>10/03/2016 11:54:23</publishTime>
+    </File>
+    <File Include="External/plugin/jQuery/jquery.min.js">
+      <publishTime>10/03/2016 11:54:23</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/css/materialize.css">
+      <publishTime>10/30/2016 20:38:52</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/css/materialize.min.css">
+      <publishTime>10/30/2016 20:38:52</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/css/style.css">
+      <publishTime>12/05/2016 16:10:15</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Bold.eot">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Bold.ttf">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Bold.woff">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Bold.woff2">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Light.eot">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Light.ttf">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Light.woff">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Light.woff2">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Medium.eot">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Medium.ttf">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Medium.woff">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Medium.woff2">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Regular.eot">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Regular.ttf">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Regular.woff">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Regular.woff2">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Thin.eot">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Thin.ttf">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Thin.woff">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/fonts/roboto/Roboto-Thin.woff2">
+      <publishTime>04/02/2016 05:02:22</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/js/materialize.js">
+      <publishTime>10/30/2016 20:38:52</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/js/materialize.min.js">
+      <publishTime>10/30/2016 20:38:52</publishTime>
+    </File>
+    <File Include="External/plugin/Materialize/v0.97.7.txt">
+      <publishTime>10/03/2016 11:54:26</publishTime>
+    </File>
+    <File Include="External/Test.aspx">
+      <publishTime>10/20/2016 17:41:54</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/26/2016 15:23:01</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/15/2017 14:43:42</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

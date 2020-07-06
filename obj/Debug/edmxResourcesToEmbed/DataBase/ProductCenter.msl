@@ -1,0 +1,918 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProductCenterModelStoreContainer" CdmEntityContainer="ProductCenterEntities">
+    <EntitySetMapping Name="Icon">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon">
+        <MappingFragment StoreEntitySet="Icon">
+          <ScalarProperty Name="Icon_ID" ColumnName="Icon_ID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Icon_Type" ColumnName="Icon_Type" />
+          <ScalarProperty Name="IconName_zh_TW" ColumnName="IconName_zh_TW" />
+          <ScalarProperty Name="IconName_en_US" ColumnName="IconName_en_US" />
+          <ScalarProperty Name="IconName_zh_CN" ColumnName="IconName_zh_CN" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icon_Pics">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon_Pics">
+        <MappingFragment StoreEntitySet="Icon_Pics">
+          <ScalarProperty Name="Icon_ID" ColumnName="Icon_ID" />
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Pic_File" ColumnName="Pic_File" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icon_Rel_Certification">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon_Rel_Certification">
+        <MappingFragment StoreEntitySet="Icon_Rel_Certification">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Cert_ID" ColumnName="Cert_ID" />
+          <ScalarProperty Name="Detail_ID" ColumnName="Detail_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icon_Rel_Certification_eService">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon_Rel_Certification_eService">
+        <MappingFragment StoreEntitySet="Icon_Rel_Certification_eService">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icon_Rel_PKWeb">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon_Rel_PKWeb">
+        <MappingFragment StoreEntitySet="Icon_Rel_PKWeb">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icon_Rel_Spec_eService">
+      <EntityTypeMapping TypeName="ProductCenterModel.Icon_Rel_Spec_eService">
+        <MappingFragment StoreEntitySet="Icon_Rel_Spec_eService">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_AD">
+      <EntityTypeMapping TypeName="ProductCenterModel.Log_AD">
+        <MappingFragment StoreEntitySet="Log_AD">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="Proc_Time" ColumnName="Proc_Time" />
+          <ScalarProperty Name="Proc_Type" ColumnName="Proc_Type" />
+          <ScalarProperty Name="Proc_Action" ColumnName="Proc_Action" />
+          <ScalarProperty Name="Proc_Account" ColumnName="Proc_Account" />
+          <ScalarProperty Name="Proc_Desc" ColumnName="Proc_Desc" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_Record">
+      <EntityTypeMapping TypeName="ProductCenterModel.Log_Record">
+        <MappingFragment StoreEntitySet="Log_Record">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="Proc_Time" ColumnName="Proc_Time" />
+          <ScalarProperty Name="Proc_Type" ColumnName="Proc_Type" />
+          <ScalarProperty Name="Proc_Action" ColumnName="Proc_Action" />
+          <ScalarProperty Name="Proc_Desc" ColumnName="Proc_Desc" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_SendMail">
+      <EntityTypeMapping TypeName="ProductCenterModel.Log_SendMail">
+        <MappingFragment StoreEntitySet="Log_SendMail">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+          <ScalarProperty Name="CC" ColumnName="CC" />
+          <ScalarProperty Name="Bcc" ColumnName="Bcc" />
+          <ScalarProperty Name="FromFunc" ColumnName="FromFunc" />
+          <ScalarProperty Name="Send_Time" ColumnName="Send_Time" />
+          <ScalarProperty Name="Send_Status" ColumnName="Send_Status" />
+          <ScalarProperty Name="Send_Desc" ColumnName="Send_Desc" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_User_Group_Rel_Program">
+      <EntityTypeMapping TypeName="ProductCenterModel.Log_User_Group_Rel_Program">
+        <MappingFragment StoreEntitySet="Log_User_Group_Rel_Program">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Prog_ID" ColumnName="Prog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_User_Profile_Rel_Program">
+      <EntityTypeMapping TypeName="ProductCenterModel.Log_User_Profile_Rel_Program">
+        <MappingFragment StoreEntitySet="Log_User_Profile_Rel_Program">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Prog_ID" ColumnName="Prog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Param_Corp">
+      <EntityTypeMapping TypeName="ProductCenterModel.Param_Corp">
+        <MappingFragment StoreEntitySet="Param_Corp">
+          <ScalarProperty Name="Corp_ID" ColumnName="Corp_ID" />
+          <ScalarProperty Name="Corp_Name" ColumnName="Corp_Name" />
+          <ScalarProperty Name="Original_Currency" ColumnName="Original_Currency" />
+          <ScalarProperty Name="Local_Currency" ColumnName="Local_Currency" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Param_Dictionary">
+      <EntityTypeMapping TypeName="ProductCenterModel.Param_Dictionary">
+        <MappingFragment StoreEntitySet="Param_Dictionary">
+          <ScalarProperty Name="Spec_Column" ColumnName="Spec_Column" />
+          <ScalarProperty Name="Column_Type" ColumnName="Column_Type" />
+          <ScalarProperty Name="Dic_zh_TW" ColumnName="Dic_zh_TW" />
+          <ScalarProperty Name="Dic_en_US" ColumnName="Dic_en_US" />
+          <ScalarProperty Name="Dic_zh_CN" ColumnName="Dic_zh_CN" />
+          <ScalarProperty Name="Disp_zh_TW" ColumnName="Disp_zh_TW" />
+          <ScalarProperty Name="Disp_en_US" ColumnName="Disp_en_US" />
+          <ScalarProperty Name="Disp_zh_CN" ColumnName="Disp_zh_CN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Param_ExchangeRate">
+      <EntityTypeMapping TypeName="ProductCenterModel.Param_ExchangeRate">
+        <MappingFragment StoreEntitySet="Param_ExchangeRate">
+          <ScalarProperty Name="Currency_From" ColumnName="Currency_From" />
+          <ScalarProperty Name="Currency_To" ColumnName="Currency_To" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Param_Public">
+      <EntityTypeMapping TypeName="ProductCenterModel.Param_Public">
+        <MappingFragment StoreEntitySet="Param_Public">
+          <ScalarProperty Name="Param_Kind" ColumnName="Param_Kind" />
+          <ScalarProperty Name="Param_Name" ColumnName="Param_Name" />
+          <ScalarProperty Name="Param_Value" ColumnName="Param_Value" />
+          <ScalarProperty Name="Param_Desc" ColumnName="Param_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_BOMSpec">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_BOMSpec">
+        <MappingFragment StoreEntitySet="Prod_BOMSpec">
+          <ScalarProperty Name="BOM_SpecID" ColumnName="BOM_SpecID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+          <ScalarProperty Name="SpecName_zh_TW" ColumnName="SpecName_zh_TW" />
+          <ScalarProperty Name="SpecName_en_US" ColumnName="SpecName_en_US" />
+          <ScalarProperty Name="SpecName_zh_CN" ColumnName="SpecName_zh_CN" />
+          <ScalarProperty Name="SpecType" ColumnName="SpecType" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="SpecDESC" ColumnName="SpecDESC" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_BOMSpec_List">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_BOMSpec_List">
+        <MappingFragment StoreEntitySet="Prod_BOMSpec_List">
+          <ScalarProperty Name="Spec_ListID" ColumnName="Spec_ListID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+          <ScalarProperty Name="BOM_SpecID" ColumnName="BOM_SpecID" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="ListSymbol" ColumnName="ListSymbol" />
+          <ScalarProperty Name="ListValue" ColumnName="ListValue" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_BOMSpec_Option">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_BOMSpec_Option">
+        <MappingFragment StoreEntitySet="Prod_BOMSpec_Option">
+          <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="OptionGName" ColumnName="OptionGName" />
+          <ScalarProperty Name="Spec_OptionValue" ColumnName="Spec_OptionValue" />
+          <ScalarProperty Name="Spec_OptionName_zh_TW" ColumnName="Spec_OptionName_zh_TW" />
+          <ScalarProperty Name="Spec_OptionName_en_US" ColumnName="Spec_OptionName_en_US" />
+          <ScalarProperty Name="Spec_OptionName_zh_CN" ColumnName="Spec_OptionName_zh_CN" />
+          <ScalarProperty Name="Spec_OptionPic" ColumnName="Spec_OptionPic" />
+          <ScalarProperty Name="Spec_OptionFile" ColumnName="Spec_OptionFile" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_BOMSpec_OptionGroup">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_BOMSpec_OptionGroup">
+        <MappingFragment StoreEntitySet="Prod_BOMSpec_OptionGroup">
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="OptionGName" ColumnName="OptionGName" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Certification">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Certification">
+        <MappingFragment StoreEntitySet="Prod_Certification">
+          <ScalarProperty Name="Cert_ID" ColumnName="Cert_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Doc_Path" ColumnName="Doc_Path" />
+          <ScalarProperty Name="Self_Cert" ColumnName="Self_Cert" />
+          <ScalarProperty Name="Supplier_ItemNo" ColumnName="Supplier_ItemNo" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Certification_Detail">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Certification_Detail">
+        <MappingFragment StoreEntitySet="Prod_Certification_Detail">
+          <ScalarProperty Name="Cert_ID" ColumnName="Cert_ID" />
+          <ScalarProperty Name="Detail_ID" ColumnName="Detail_ID" />
+          <ScalarProperty Name="Cert_Type" ColumnName="Cert_Type" />
+          <ScalarProperty Name="Cert_TypeText" ColumnName="Cert_TypeText" />
+          <ScalarProperty Name="IsCE" ColumnName="IsCE" />
+          <ScalarProperty Name="Cert_No" ColumnName="Cert_No" />
+          <ScalarProperty Name="Cert_Cmd" ColumnName="Cert_Cmd" />
+          <ScalarProperty Name="Cert_Norm" ColumnName="Cert_Norm" />
+          <ScalarProperty Name="Cert_ApproveDate" ColumnName="Cert_ApproveDate" />
+          <ScalarProperty Name="Cert_ValidDate" ColumnName="Cert_ValidDate" />
+          <ScalarProperty Name="Cert_Desc1" ColumnName="Cert_Desc1" />
+          <ScalarProperty Name="Cert_Desc2" ColumnName="Cert_Desc2" />
+          <ScalarProperty Name="Cert_OrgFile" ColumnName="Cert_OrgFile" />
+          <ScalarProperty Name="Cert_File" ColumnName="Cert_File" />
+          <ScalarProperty Name="Cert_OrgFile_Report" ColumnName="Cert_OrgFile_Report" />
+          <ScalarProperty Name="Cert_File_Report" ColumnName="Cert_File_Report" />
+          <ScalarProperty Name="Cert_OrgFile_CE" ColumnName="Cert_OrgFile_CE" />
+          <ScalarProperty Name="Cert_File_CE" ColumnName="Cert_File_CE" />
+          <ScalarProperty Name="Cert_OrgFile_CE_en_US" ColumnName="Cert_OrgFile_CE_en_US" />
+          <ScalarProperty Name="Cert_File_CE_en_US" ColumnName="Cert_File_CE_en_US" />
+          <ScalarProperty Name="Cert_OrgFile_CE_zh_CN" ColumnName="Cert_OrgFile_CE_zh_CN" />
+          <ScalarProperty Name="Cert_File_CE_zh_CN" ColumnName="Cert_File_CE_zh_CN" />
+          <ScalarProperty Name="Cert_OrgFile_Check" ColumnName="Cert_OrgFile_Check" />
+          <ScalarProperty Name="Cert_File_Check" ColumnName="Cert_File_Check" />
+          <ScalarProperty Name="Cert_OrgFile_Check_en_US" ColumnName="Cert_OrgFile_Check_en_US" />
+          <ScalarProperty Name="Cert_File_Check_en_US" ColumnName="Cert_File_Check_en_US" />
+          <ScalarProperty Name="Cert_OrgFile_Check_zh_CN" ColumnName="Cert_OrgFile_Check_zh_CN" />
+          <ScalarProperty Name="Cert_File_Check_zh_CN" ColumnName="Cert_File_Check_zh_CN" />
+          <ScalarProperty Name="IsWebDW" ColumnName="IsWebDW" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Class">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Class">
+        <MappingFragment StoreEntitySet="Prod_Class">
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Class_Name_zh_TW" ColumnName="Class_Name_zh_TW" />
+          <ScalarProperty Name="Class_Name_en_US" ColumnName="Class_Name_en_US" />
+          <ScalarProperty Name="Class_Name_zh_CN" ColumnName="Class_Name_zh_CN" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Display_PKWeb" ColumnName="Display_PKWeb" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_File_SOP">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_File_SOP">
+        <MappingFragment StoreEntitySet="Prod_File_SOP">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="SOP_File" ColumnName="SOP_File" />
+          <ScalarProperty Name="SOP_OrgFile" ColumnName="SOP_OrgFile" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Info">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Info">
+        <MappingFragment StoreEntitySet="Prod_Info">
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Info1" ColumnName="Info1" />
+          <ScalarProperty Name="Info2" ColumnName="Info2" />
+          <ScalarProperty Name="Info3" ColumnName="Info3" />
+          <ScalarProperty Name="Info4" ColumnName="Info4" />
+          <ScalarProperty Name="Info5" ColumnName="Info5" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Item">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Item">
+        <MappingFragment StoreEntitySet="Prod_Item">
+          <ScalarProperty Name="DBS" ColumnName="DBS" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Item_No" ColumnName="Item_No" />
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Warehouse_Class_ID" ColumnName="Warehouse_Class_ID" />
+          <ScalarProperty Name="Model_Name_zh_TW" ColumnName="Model_Name_zh_TW" />
+          <ScalarProperty Name="Model_Name_zh_CN" ColumnName="Model_Name_zh_CN" />
+          <ScalarProperty Name="Model_Name_en_US" ColumnName="Model_Name_en_US" />
+          <ScalarProperty Name="Model_Desc" ColumnName="Model_Desc" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Catelog_Vol" ColumnName="Catelog_Vol" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Ship_From" ColumnName="Ship_From" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Date_Of_Listing" ColumnName="Date_Of_Listing" />
+          <ScalarProperty Name="Stop_Offer_Date" ColumnName="Stop_Offer_Date" />
+          <ScalarProperty Name="Substitute_Model_No_TW" ColumnName="Substitute_Model_No_TW" />
+          <ScalarProperty Name="Substitute_Model_No_SH" ColumnName="Substitute_Model_No_SH" />
+          <ScalarProperty Name="Substitute_Model_No_SZ" ColumnName="Substitute_Model_No_SZ" />
+          <ScalarProperty Name="Cases_Of_Failure_Date_TW" ColumnName="Cases_Of_Failure_Date_TW" />
+          <ScalarProperty Name="Cases_Of_Failure_Date_SH" ColumnName="Cases_Of_Failure_Date_SH" />
+          <ScalarProperty Name="Cases_Of_Failure_Date_SZ" ColumnName="Cases_Of_Failure_Date_SZ" />
+          <ScalarProperty Name="Pub_Patent_No" ColumnName="Pub_Patent_No" />
+          <ScalarProperty Name="Pub_Logo" ColumnName="Pub_Logo" />
+          <ScalarProperty Name="Pub_Logo_Printing" ColumnName="Pub_Logo_Printing" />
+          <ScalarProperty Name="Pub_PW_L" ColumnName="Pub_PW_L" />
+          <ScalarProperty Name="Pub_PW_W" ColumnName="Pub_PW_W" />
+          <ScalarProperty Name="Pub_PW_H" ColumnName="Pub_PW_H" />
+          <ScalarProperty Name="Pub_PW_Other" ColumnName="Pub_PW_Other" />
+          <ScalarProperty Name="Pub_Individual_Packing_zh_TW" ColumnName="Pub_Individual_Packing_zh_TW" />
+          <ScalarProperty Name="Pub_Individual_Packing_en_US" ColumnName="Pub_Individual_Packing_en_US" />
+          <ScalarProperty Name="Pub_Individual_Packing_zh_CN" ColumnName="Pub_Individual_Packing_zh_CN" />
+          <ScalarProperty Name="Pub_IP_Net_Weight" ColumnName="Pub_IP_Net_Weight" />
+          <ScalarProperty Name="Pub_IP_Weight" ColumnName="Pub_IP_Weight" />
+          <ScalarProperty Name="Pub_IP_L" ColumnName="Pub_IP_L" />
+          <ScalarProperty Name="Pub_IP_W" ColumnName="Pub_IP_W" />
+          <ScalarProperty Name="Pub_IP_H" ColumnName="Pub_IP_H" />
+          <ScalarProperty Name="Pub_IB_Qty" ColumnName="Pub_IB_Qty" />
+          <ScalarProperty Name="Pub_IB_NW" ColumnName="Pub_IB_NW" />
+          <ScalarProperty Name="Pub_IB_GW" ColumnName="Pub_IB_GW" />
+          <ScalarProperty Name="Pub_IB_L" ColumnName="Pub_IB_L" />
+          <ScalarProperty Name="Pub_IB_W" ColumnName="Pub_IB_W" />
+          <ScalarProperty Name="Pub_IB_H" ColumnName="Pub_IB_H" />
+          <ScalarProperty Name="Pub_IB_CUFT" ColumnName="Pub_IB_CUFT" />
+          <ScalarProperty Name="Pub_Carton_Qty_CTN" ColumnName="Pub_Carton_Qty_CTN" />
+          <ScalarProperty Name="Pub_Carton_Qty" ColumnName="Pub_Carton_Qty" />
+          <ScalarProperty Name="Pub_Carton_NW" ColumnName="Pub_Carton_NW" />
+          <ScalarProperty Name="Pub_Carton_GW" ColumnName="Pub_Carton_GW" />
+          <ScalarProperty Name="Pub_Carton_L" ColumnName="Pub_Carton_L" />
+          <ScalarProperty Name="Pub_Carton_W" ColumnName="Pub_Carton_W" />
+          <ScalarProperty Name="Pub_Carton_H" ColumnName="Pub_Carton_H" />
+          <ScalarProperty Name="Pub_Carton_CUFT" ColumnName="Pub_Carton_CUFT" />
+          <ScalarProperty Name="Pub_QC_Category" ColumnName="Pub_QC_Category" />
+          <ScalarProperty Name="Pub_Recommended" ColumnName="Pub_Recommended" />
+          <ScalarProperty Name="Pub_Notes" ColumnName="Pub_Notes" />
+          <ScalarProperty Name="Pub_Features_Remark" ColumnName="Pub_Features_Remark" />
+          <ScalarProperty Name="Pub_Card_Model_No" ColumnName="Pub_Card_Model_No" />
+          <ScalarProperty Name="Pub_Alternate2" ColumnName="Pub_Alternate2" />
+          <ScalarProperty Name="Pub_Message" ColumnName="Pub_Message" />
+          <ScalarProperty Name="Pub_Use" ColumnName="Pub_Use" />
+          <ScalarProperty Name="Pub_Accessories" ColumnName="Pub_Accessories" />
+          <ScalarProperty Name="Pub_Select_ModelNo" ColumnName="Pub_Select_ModelNo" />
+          <ScalarProperty Name="Pub_Compare_ModelNo" ColumnName="Pub_Compare_ModelNo" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="PDF_Type" ColumnName="PDF_Type" />
+          <ScalarProperty Name="MOQ" ColumnName="MOQ" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_MallPic">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_MallPic">
+        <MappingFragment StoreEntitySet="Prod_MallPic">
+          <ScalarProperty Name="PMID" ColumnName="PMID" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="PicFile" ColumnName="PicFile" />
+          <ScalarProperty Name="PicDesc" ColumnName="PicDesc" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_News">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_News">
+        <MappingFragment StoreEntitySet="Prod_News">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="TimingType" ColumnName="TimingType" />
+          <ScalarProperty Name="TimingDate" ColumnName="TimingDate" />
+          <ScalarProperty Name="Desc1" ColumnName="Desc1" />
+          <ScalarProperty Name="Desc2" ColumnName="Desc2" />
+          <ScalarProperty Name="IsMail" ColumnName="IsMail" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+          <ScalarProperty Name="Send_Who" ColumnName="Send_Who" />
+          <ScalarProperty Name="Send_Time" ColumnName="Send_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_News_Attachment">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_News_Attachment">
+        <MappingFragment StoreEntitySet="Prod_News_Attachment">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="AttID" ColumnName="AttID" />
+          <ScalarProperty Name="AttType" ColumnName="AttType" />
+          <ScalarProperty Name="AttOrgName" ColumnName="AttOrgName" />
+          <ScalarProperty Name="AttName" ColumnName="AttName" />
+          <ScalarProperty Name="AttDesc" ColumnName="AttDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_News_Models">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_News_Models">
+        <MappingFragment StoreEntitySet="Prod_News_Models">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_News_SubModels">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_News_SubModels">
+        <MappingFragment StoreEntitySet="Prod_News_SubModels">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_News_Target">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_News_Target">
+        <MappingFragment StoreEntitySet="Prod_News_Target">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_NewsClass">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_NewsClass">
+        <MappingFragment StoreEntitySet="Prod_NewsClass">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ClassName_zh_TW" ColumnName="ClassName_zh_TW" />
+          <ScalarProperty Name="ClassName_en_US" ColumnName="ClassName_en_US" />
+          <ScalarProperty Name="ClassName_zh_CN" ColumnName="ClassName_zh_CN" />
+          <ScalarProperty Name="UpClass" ColumnName="UpClass" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_PDF_byClass">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_PDF_byClass">
+        <MappingFragment StoreEntitySet="Prod_PDF_byClass">
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_PDF_byItem">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_PDF_byItem">
+        <MappingFragment StoreEntitySet="Prod_PDF_byItem">
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Rel_PartNo">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Rel_PartNo">
+        <MappingFragment StoreEntitySet="Prod_Rel_PartNo">
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Part_No" ColumnName="Part_No" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec">
+        <MappingFragment StoreEntitySet="Prod_Spec">
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+          <ScalarProperty Name="SpecName_zh_TW" ColumnName="SpecName_zh_TW" />
+          <ScalarProperty Name="SpecName_en_US" ColumnName="SpecName_en_US" />
+          <ScalarProperty Name="SpecName_zh_CN" ColumnName="SpecName_zh_CN" />
+          <ScalarProperty Name="SpecType" ColumnName="SpecType" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="SpecDESC" ColumnName="SpecDESC" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_Category">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_Category">
+        <MappingFragment StoreEntitySet="Prod_Spec_Category">
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+          <ScalarProperty Name="CateName_zh_TW" ColumnName="CateName_zh_TW" />
+          <ScalarProperty Name="CateName_en_US" ColumnName="CateName_en_US" />
+          <ScalarProperty Name="CateName_zh_CN" ColumnName="CateName_zh_CN" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_Class">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_Class">
+        <MappingFragment StoreEntitySet="Prod_Spec_Class">
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="ClassName_zh_TW" ColumnName="ClassName_zh_TW" />
+          <ScalarProperty Name="ClassName_en_US" ColumnName="ClassName_en_US" />
+          <ScalarProperty Name="ClassName_zh_CN" ColumnName="ClassName_zh_CN" />
+          <ScalarProperty Name="UpClass" ColumnName="UpClass" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_List">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_List">
+        <MappingFragment StoreEntitySet="Prod_Spec_List">
+          <ScalarProperty Name="Spec_ListID" ColumnName="Spec_ListID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+          <ScalarProperty Name="ListSymbol" ColumnName="ListSymbol" />
+          <ScalarProperty Name="ListValue" ColumnName="ListValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_Option">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_Option">
+        <MappingFragment StoreEntitySet="Prod_Spec_Option">
+          <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="OptionGName" ColumnName="OptionGName" />
+          <ScalarProperty Name="Spec_OptionValue" ColumnName="Spec_OptionValue" />
+          <ScalarProperty Name="Spec_OptionName_zh_TW" ColumnName="Spec_OptionName_zh_TW" />
+          <ScalarProperty Name="Spec_OptionName_en_US" ColumnName="Spec_OptionName_en_US" />
+          <ScalarProperty Name="Spec_OptionName_zh_CN" ColumnName="Spec_OptionName_zh_CN" />
+          <ScalarProperty Name="Spec_OptionPic" ColumnName="Spec_OptionPic" />
+          <ScalarProperty Name="Spec_OptionFile" ColumnName="Spec_OptionFile" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_OptionGroup">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_OptionGroup">
+        <MappingFragment StoreEntitySet="Prod_Spec_OptionGroup">
+          <ScalarProperty Name="OptionGID" ColumnName="OptionGID" />
+          <ScalarProperty Name="OptionGName" ColumnName="OptionGName" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_Spec_Rel_Category">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_Spec_Rel_Category">
+        <MappingFragment StoreEntitySet="Prod_Spec_Rel_Category">
+          <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+          <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+          <ScalarProperty Name="CateID" ColumnName="CateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdPic_Figure">
+      <EntityTypeMapping TypeName="ProductCenterModel.ProdPic_Figure">
+        <MappingFragment StoreEntitySet="ProdPic_Figure">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Pic01" ColumnName="Pic01" />
+          <ScalarProperty Name="Pic01_OrgFile" ColumnName="Pic01_OrgFile" />
+          <ScalarProperty Name="Pic01_UpdTime" ColumnName="Pic01_UpdTime" />
+          <ScalarProperty Name="Pic02" ColumnName="Pic02" />
+          <ScalarProperty Name="Pic02_OrgFile" ColumnName="Pic02_OrgFile" />
+          <ScalarProperty Name="Pic02_UpdTime" ColumnName="Pic02_UpdTime" />
+          <ScalarProperty Name="Pic03" ColumnName="Pic03" />
+          <ScalarProperty Name="Pic03_OrgFile" ColumnName="Pic03_OrgFile" />
+          <ScalarProperty Name="Pic03_UpdTime" ColumnName="Pic03_UpdTime" />
+          <ScalarProperty Name="Pic04" ColumnName="Pic04" />
+          <ScalarProperty Name="Pic04_OrgFile" ColumnName="Pic04_OrgFile" />
+          <ScalarProperty Name="Pic04_UpdTime" ColumnName="Pic04_UpdTime" />
+          <ScalarProperty Name="Pic05" ColumnName="Pic05" />
+          <ScalarProperty Name="Pic05_OrgFile" ColumnName="Pic05_OrgFile" />
+          <ScalarProperty Name="Pic05_UpdTime" ColumnName="Pic05_UpdTime" />
+          <ScalarProperty Name="Pic06" ColumnName="Pic06" />
+          <ScalarProperty Name="Pic06_OrgFile" ColumnName="Pic06_OrgFile" />
+          <ScalarProperty Name="Pic06_UpdTime" ColumnName="Pic06_UpdTime" />
+          <ScalarProperty Name="Pic07" ColumnName="Pic07" />
+          <ScalarProperty Name="Pic07_OrgFile" ColumnName="Pic07_OrgFile" />
+          <ScalarProperty Name="Pic07_UpdTime" ColumnName="Pic07_UpdTime" />
+          <ScalarProperty Name="Pic08" ColumnName="Pic08" />
+          <ScalarProperty Name="Pic08_OrgFile" ColumnName="Pic08_OrgFile" />
+          <ScalarProperty Name="Pic08_UpdTime" ColumnName="Pic08_UpdTime" />
+          <ScalarProperty Name="Txt01_zh_TW" ColumnName="Txt01_zh_TW" />
+          <ScalarProperty Name="Txt02_zh_TW" ColumnName="Txt02_zh_TW" />
+          <ScalarProperty Name="Txt03_zh_TW" ColumnName="Txt03_zh_TW" />
+          <ScalarProperty Name="Txt04_zh_TW" ColumnName="Txt04_zh_TW" />
+          <ScalarProperty Name="Txt05_zh_TW" ColumnName="Txt05_zh_TW" />
+          <ScalarProperty Name="Txt06_zh_TW" ColumnName="Txt06_zh_TW" />
+          <ScalarProperty Name="Txt07_zh_TW" ColumnName="Txt07_zh_TW" />
+          <ScalarProperty Name="Txt08_zh_TW" ColumnName="Txt08_zh_TW" />
+          <ScalarProperty Name="Txt01_zh_CN" ColumnName="Txt01_zh_CN" />
+          <ScalarProperty Name="Txt02_zh_CN" ColumnName="Txt02_zh_CN" />
+          <ScalarProperty Name="Txt03_zh_CN" ColumnName="Txt03_zh_CN" />
+          <ScalarProperty Name="Txt04_zh_CN" ColumnName="Txt04_zh_CN" />
+          <ScalarProperty Name="Txt05_zh_CN" ColumnName="Txt05_zh_CN" />
+          <ScalarProperty Name="Txt06_zh_CN" ColumnName="Txt06_zh_CN" />
+          <ScalarProperty Name="Txt07_zh_CN" ColumnName="Txt07_zh_CN" />
+          <ScalarProperty Name="Txt08_zh_CN" ColumnName="Txt08_zh_CN" />
+          <ScalarProperty Name="Txt01_en_US" ColumnName="Txt01_en_US" />
+          <ScalarProperty Name="Txt02_en_US" ColumnName="Txt02_en_US" />
+          <ScalarProperty Name="Txt03_en_US" ColumnName="Txt03_en_US" />
+          <ScalarProperty Name="Txt04_en_US" ColumnName="Txt04_en_US" />
+          <ScalarProperty Name="Txt05_en_US" ColumnName="Txt05_en_US" />
+          <ScalarProperty Name="Txt06_en_US" ColumnName="Txt06_en_US" />
+          <ScalarProperty Name="Txt07_en_US" ColumnName="Txt07_en_US" />
+          <ScalarProperty Name="Txt08_en_US" ColumnName="Txt08_en_US" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdPic_Group">
+      <EntityTypeMapping TypeName="ProductCenterModel.ProdPic_Group">
+        <MappingFragment StoreEntitySet="ProdPic_Group">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Pic_Class" ColumnName="Pic_Class" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Pic_OrgFile" ColumnName="Pic_OrgFile" />
+          <ScalarProperty Name="Pic_File" ColumnName="Pic_File" />
+          <ScalarProperty Name="Pic_Desc" ColumnName="Pic_Desc" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdPic_Param">
+      <EntityTypeMapping TypeName="ProductCenterModel.ProdPic_Param">
+        <MappingFragment StoreEntitySet="ProdPic_Param">
+          <ScalarProperty Name="Param_ID" ColumnName="Param_ID" />
+          <ScalarProperty Name="Pic_Class" ColumnName="Pic_Class" />
+          <ScalarProperty Name="Param_Name" ColumnName="Param_Name" />
+          <ScalarProperty Name="Param_RelColumn" ColumnName="Param_RelColumn" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdPic_Photo">
+      <EntityTypeMapping TypeName="ProductCenterModel.ProdPic_Photo">
+        <MappingFragment StoreEntitySet="ProdPic_Photo">
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Pic01" ColumnName="Pic01" />
+          <ScalarProperty Name="Pic01_OrgFile" ColumnName="Pic01_OrgFile" />
+          <ScalarProperty Name="Pic01_UpdTime" ColumnName="Pic01_UpdTime" />
+          <ScalarProperty Name="Pic02" ColumnName="Pic02" />
+          <ScalarProperty Name="Pic02_OrgFile" ColumnName="Pic02_OrgFile" />
+          <ScalarProperty Name="Pic02_UpdTime" ColumnName="Pic02_UpdTime" />
+          <ScalarProperty Name="Pic03" ColumnName="Pic03" />
+          <ScalarProperty Name="Pic03_OrgFile" ColumnName="Pic03_OrgFile" />
+          <ScalarProperty Name="Pic03_UpdTime" ColumnName="Pic03_UpdTime" />
+          <ScalarProperty Name="Pic04" ColumnName="Pic04" />
+          <ScalarProperty Name="Pic04_OrgFile" ColumnName="Pic04_OrgFile" />
+          <ScalarProperty Name="Pic04_UpdTime" ColumnName="Pic04_UpdTime" />
+          <ScalarProperty Name="Pic05" ColumnName="Pic05" />
+          <ScalarProperty Name="Pic05_OrgFile" ColumnName="Pic05_OrgFile" />
+          <ScalarProperty Name="Pic05_UpdTime" ColumnName="Pic05_UpdTime" />
+          <ScalarProperty Name="Pic06" ColumnName="Pic06" />
+          <ScalarProperty Name="Pic06_OrgFile" ColumnName="Pic06_OrgFile" />
+          <ScalarProperty Name="Pic06_UpdTime" ColumnName="Pic06_UpdTime" />
+          <ScalarProperty Name="Pic07" ColumnName="Pic07" />
+          <ScalarProperty Name="Pic07_OrgFile" ColumnName="Pic07_OrgFile" />
+          <ScalarProperty Name="Pic07_UpdTime" ColumnName="Pic07_UpdTime" />
+          <ScalarProperty Name="Pic08" ColumnName="Pic08" />
+          <ScalarProperty Name="Pic08_OrgFile" ColumnName="Pic08_OrgFile" />
+          <ScalarProperty Name="Pic08_UpdTime" ColumnName="Pic08_UpdTime" />
+          <ScalarProperty Name="Pic09" ColumnName="Pic09" />
+          <ScalarProperty Name="Pic09_OrgFile" ColumnName="Pic09_OrgFile" />
+          <ScalarProperty Name="Pic09_UpdTime" ColumnName="Pic09_UpdTime" />
+          <ScalarProperty Name="PicSource" ColumnName="PicSource" />
+          <ScalarProperty Name="Create_Who" ColumnName="Create_Who" />
+          <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+          <ScalarProperty Name="Update_Who" ColumnName="Update_Who" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdPic_Rel">
+      <EntityTypeMapping TypeName="ProductCenterModel.ProdPic_Rel">
+        <MappingFragment StoreEntitySet="ProdPic_Rel">
+          <ScalarProperty Name="Rel_ID" ColumnName="Rel_ID" />
+          <ScalarProperty Name="Pic_Class" ColumnName="Pic_Class" />
+          <ScalarProperty Name="Pic_Column" ColumnName="Pic_Column" />
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Program">
+      <EntityTypeMapping TypeName="ProductCenterModel.Program">
+        <MappingFragment StoreEntitySet="Program">
+          <ScalarProperty Name="Prog_ID" ColumnName="Prog_ID" />
+          <ScalarProperty Name="Prog_Name_zh_TW" ColumnName="Prog_Name_zh_TW" />
+          <ScalarProperty Name="Prog_Name_en_US" ColumnName="Prog_Name_en_US" />
+          <ScalarProperty Name="Prog_Name_zh_CN" ColumnName="Prog_Name_zh_CN" />
+          <ScalarProperty Name="Prog_Link" ColumnName="Prog_Link" />
+          <ScalarProperty Name="Up_Id" ColumnName="Up_Id" />
+          <ScalarProperty Name="Lv" ColumnName="Lv" />
+          <ScalarProperty Name="Lv_Path" ColumnName="Lv_Path" />
+          <ScalarProperty Name="Lv_Path_Name" ColumnName="Lv_Path_Name" />
+          <ScalarProperty Name="Child_Cnt" ColumnName="Child_Cnt" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="LeftMenu_Display" ColumnName="LeftMenu_Display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="CssStyle" ColumnName="CssStyle" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ProductCenterModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Group_Rel_Program">
+      <EntityTypeMapping TypeName="ProductCenterModel.User_Group_Rel_Program">
+        <MappingFragment StoreEntitySet="User_Group_Rel_Program">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Prog_ID" ColumnName="Prog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Profile_Rel_Program">
+      <EntityTypeMapping TypeName="ProductCenterModel.User_Profile_Rel_Program">
+        <MappingFragment StoreEntitySet="User_Profile_Rel_Program">
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Prog_ID" ColumnName="Prog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouse_Class">
+      <EntityTypeMapping TypeName="ProductCenterModel.Warehouse_Class">
+        <MappingFragment StoreEntitySet="Warehouse_Class">
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Class_Name_zh_TW" ColumnName="Class_Name_zh_TW" />
+          <ScalarProperty Name="Class_Name_en_US" ColumnName="Class_Name_en_US" />
+          <ScalarProperty Name="Class_Name_zh_CN" ColumnName="Class_Name_zh_CN" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERP_QMSME">
+      <EntityTypeMapping TypeName="ProductCenterModel.ERP_QMSME">
+        <MappingFragment StoreEntitySet="ERP_QMSME">
+          <ScalarProperty Name="DBS" ColumnName="DBS" />
+          <ScalarProperty Name="ME001" ColumnName="ME001" />
+          <ScalarProperty Name="ME002" ColumnName="ME002" />
+          <ScalarProperty Name="ME003" ColumnName="ME003" />
+          <ScalarProperty Name="ME004" ColumnName="ME004" />
+          <ScalarProperty Name="ME005" ColumnName="ME005" />
+          <ScalarProperty Name="ME006" ColumnName="ME006" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERP_QMSMG">
+      <EntityTypeMapping TypeName="ProductCenterModel.ERP_QMSMG">
+        <MappingFragment StoreEntitySet="ERP_QMSMG">
+          <ScalarProperty Name="DBS" ColumnName="DBS" />
+          <ScalarProperty Name="MG001" ColumnName="MG001" />
+          <ScalarProperty Name="MG002" ColumnName="MG002" />
+          <ScalarProperty Name="MG003" ColumnName="MG003" />
+          <ScalarProperty Name="MG004" ColumnName="MG004" />
+          <ScalarProperty Name="MG005" ColumnName="MG005" />
+          <ScalarProperty Name="MG006" ColumnName="MG006" />
+          <ScalarProperty Name="MG007" ColumnName="MG007" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prod_ItemSZ">
+      <EntityTypeMapping TypeName="ProductCenterModel.Prod_ItemSZ">
+        <MappingFragment StoreEntitySet="Prod_ItemSZ">
+          <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+          <ScalarProperty Name="Item_No" ColumnName="Item_No" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Warehouse_Class_ID" ColumnName="Warehouse_Class_ID" />
+          <ScalarProperty Name="Model_Name_zh_TW" ColumnName="Model_Name_zh_TW" />
+          <ScalarProperty Name="Model_Name_zh_CN" ColumnName="Model_Name_zh_CN" />
+          <ScalarProperty Name="Model_Name_en_US" ColumnName="Model_Name_en_US" />
+          <ScalarProperty Name="Model_Desc" ColumnName="Model_Desc" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Catelog_Vol" ColumnName="Catelog_Vol" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Ship_From" ColumnName="Ship_From" />
+          <ScalarProperty Name="Date_Of_Listing" ColumnName="Date_Of_Listing" />
+          <ScalarProperty Name="Stop_Offer_Date" ColumnName="Stop_Offer_Date" />
+          <ScalarProperty Name="Substitute_Model_No_SZ" ColumnName="Substitute_Model_No_SZ" />
+          <ScalarProperty Name="Cases_Of_Failure_Date_SZ" ColumnName="Cases_Of_Failure_Date_SZ" />
+          <ScalarProperty Name="Pub_Individual_Packing_zh_TW" ColumnName="Pub_Individual_Packing_zh_TW" />
+          <ScalarProperty Name="Pub_Individual_Packing_en_US" ColumnName="Pub_Individual_Packing_en_US" />
+          <ScalarProperty Name="Pub_Individual_Packing_zh_CN" ColumnName="Pub_Individual_Packing_zh_CN" />
+          <ScalarProperty Name="Pub_IP_Weight" ColumnName="Pub_IP_Weight" />
+          <ScalarProperty Name="Pub_IB_Qty" ColumnName="Pub_IB_Qty" />
+          <ScalarProperty Name="Pub_Carton_Qty_CTN" ColumnName="Pub_Carton_Qty_CTN" />
+          <ScalarProperty Name="Pub_Carton_Qty" ColumnName="Pub_Carton_Qty" />
+          <ScalarProperty Name="Pub_Carton_NW" ColumnName="Pub_Carton_NW" />
+          <ScalarProperty Name="Pub_Carton_GW" ColumnName="Pub_Carton_GW" />
+          <ScalarProperty Name="Pub_Carton_L" ColumnName="Pub_Carton_L" />
+          <ScalarProperty Name="Pub_Carton_W" ColumnName="Pub_Carton_W" />
+          <ScalarProperty Name="Pub_Carton_H" ColumnName="Pub_Carton_H" />
+          <ScalarProperty Name="Pub_Carton_CUFT" ColumnName="Pub_Carton_CUFT" />
+          <ScalarProperty Name="Pub_QC_Category" ColumnName="Pub_QC_Category" />
+          <ScalarProperty Name="Pub_Notes" ColumnName="Pub_Notes" />
+          <ScalarProperty Name="Pub_Card_Model_No" ColumnName="Pub_Card_Model_No" />
+          <ScalarProperty Name="Pub_Alternate2" ColumnName="Pub_Alternate2" />
+          <ScalarProperty Name="Pub_Message" ColumnName="Pub_Message" />
+          <ScalarProperty Name="MOQ" ColumnName="MOQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Icon_Rel_BOMSpec" TypeName="ProductCenterModel.Icon_Rel_BOMSpec" StoreEntitySet="Icon_Rel_BOMSpec">
+      <EndProperty Name="Icon_Pics">
+        <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+      </EndProperty>
+      <EndProperty Name="Prod_BOMSpec">
+        <ScalarProperty Name="BOM_SpecID" ColumnName="BOM_SpecID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Icon_Rel_Spec" TypeName="ProductCenterModel.Icon_Rel_Spec" StoreEntitySet="Icon_Rel_Spec">
+      <EndProperty Name="Icon_Pics">
+        <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+      </EndProperty>
+      <EndProperty Name="Prod_Spec">
+        <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Prod_Item_Rel_Spec" TypeName="ProductCenterModel.Prod_Item_Rel_Spec" StoreEntitySet="Prod_Item_Rel_Spec">
+      <EndProperty Name="Prod_Item">
+        <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+      </EndProperty>
+      <EndProperty Name="Prod_Spec">
+        <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Prod_SpecClass_Rel_Spec" TypeName="ProductCenterModel.Prod_SpecClass_Rel_Spec" StoreEntitySet="Prod_SpecClass_Rel_Spec">
+      <EndProperty Name="Prod_Spec">
+        <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+      </EndProperty>
+      <EndProperty Name="Prod_Spec_Class">
+        <ScalarProperty Name="SpecClassID" ColumnName="SpecClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

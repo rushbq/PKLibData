@@ -1,0 +1,8 @@
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary_Data.csprojResolveAssemblyReference.cache
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary-Data.dll.config
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary-Data.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary-Data.pdb
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary-Data.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary-Data.pdb
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary-Method.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary-Method.pdb

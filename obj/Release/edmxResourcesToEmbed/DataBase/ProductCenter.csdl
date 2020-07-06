@@ -1,0 +1,1311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Icon">
+    <Key>
+      <PropertyRef Name="Icon_ID" />
+    </Key>
+    <Property Name="Icon_ID" Type="Int32" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <Property Name="Icon_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IconName_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IconName_en_US" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IconName_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int16" Nullable="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Icon_Pics" Relationship="Self.FK_Icon_Pics_PK_Icon" FromRole="Icon" ToRole="Icon_Pics" />
+  </EntityType>
+  <EntityType Name="Icon_Pics">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Icon_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pic_File" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int16" Nullable="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Icon" Relationship="Self.FK_Icon_Pics_PK_Icon" FromRole="Icon_Pics" ToRole="Icon" />
+    <NavigationProperty Name="Icon_Rel_PKWeb" Relationship="Self.FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec" FromRole="Icon_Pics" ToRole="Icon_Rel_PKWeb" />
+    <NavigationProperty Name="Icon_Rel_Certification" Relationship="Self.FK_Icon_Rel_Certification_PK_Icon_Pics" FromRole="Icon_Pics" ToRole="Icon_Rel_Certification" />
+    <NavigationProperty Name="Prod_BOMSpec" Relationship="Self.Icon_Rel_BOMSpec" FromRole="Icon_Pics" ToRole="Prod_BOMSpec" />
+    <NavigationProperty Name="Prod_Spec" Relationship="Self.Icon_Rel_Spec" FromRole="Icon_Pics" ToRole="Prod_Spec" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Certification">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Cert_ID" />
+      <PropertyRef Name="Detail_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cert_ID" Type="Int32" Nullable="false" />
+    <Property Name="Detail_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Icon_Pics" Relationship="Self.FK_Icon_Rel_Certification_PK_Icon_Pics" FromRole="Icon_Rel_Certification" ToRole="Icon_Pics" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Certification_eService">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_PKWeb">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Icon_Pics" Relationship="Self.FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec" FromRole="Icon_Rel_PKWeb" ToRole="Icon_Pics" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Spec_eService">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_AD">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="Int64" Nullable="false" />
+    <Property Name="Proc_Time" Type="DateTime" Precision="3" />
+    <Property Name="Proc_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_Record">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="Int64" Nullable="false" />
+    <Property Name="Proc_Time" Type="DateTime" Precision="3" />
+    <Property Name="Proc_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_SendMail">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="Int64" Nullable="false" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Reciever" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Bcc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FromFunc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Send_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Send_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Send_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Log_User_Group_Rel_Program">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+      <PropertyRef Name="LogType" />
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="Int64" Nullable="false" />
+    <Property Name="LogType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Guid" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prog_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_User_Profile_Rel_Program">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+      <PropertyRef Name="LogType" />
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="Int64" Nullable="false" />
+    <Property Name="LogType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Guid" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prog_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Param_Corp">
+    <Key>
+      <PropertyRef Name="Corp_ID" />
+    </Key>
+    <Property Name="Corp_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Corp_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Original_Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Local_Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Param_Dictionary">
+    <Key>
+      <PropertyRef Name="Spec_Column" />
+    </Key>
+    <Property Name="Spec_Column" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Column_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Dic_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dic_en_US" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dic_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Disp_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Disp_en_US" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Disp_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Param_ExchangeRate">
+    <Key>
+      <PropertyRef Name="Currency_From" />
+      <PropertyRef Name="Currency_To" />
+    </Key>
+    <Property Name="Currency_From" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Currency_To" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExchangeRate" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Param_Public">
+    <Key>
+      <PropertyRef Name="Param_Kind" />
+      <PropertyRef Name="Param_Name" />
+    </Key>
+    <Property Name="Param_Kind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Param_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Param_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Param_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec">
+    <Key>
+      <PropertyRef Name="BOM_SpecID" />
+    </Key>
+    <Property Name="BOM_SpecID" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecName_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecName_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpecName_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsRequired" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SpecDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Icon_Pics" Relationship="Self.Icon_Rel_BOMSpec" FromRole="Prod_BOMSpec" ToRole="Icon_Pics" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_List">
+    <Key>
+      <PropertyRef Name="Spec_ListID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Spec_ListID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CateID" Type="Int32" />
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="BOM_SpecID" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RowID" Type="Int32" />
+    <Property Name="ListSymbol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ListValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_Option">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OptionGName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionValue" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionName_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionName_en_US" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Spec_OptionName_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Spec_OptionPic" Type="Int32" />
+    <Property Name="Spec_OptionFile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_BOMSpec_OptionGroup" Relationship="Self.FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup" FromRole="Prod_BOMSpec_Option" ToRole="Prod_BOMSpec_OptionGroup" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_OptionGroup">
+    <Key>
+      <PropertyRef Name="OptionGID" />
+    </Key>
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OptionGName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_BOMSpec_Option" Relationship="Self.FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup" FromRole="Prod_BOMSpec_OptionGroup" ToRole="Prod_BOMSpec_Option" />
+  </EntityType>
+  <EntityType Name="Prod_Certification">
+    <Key>
+      <PropertyRef Name="Cert_ID" />
+    </Key>
+    <Property Name="Cert_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Doc_Path" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Self_Cert" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Supplier_ItemNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Prod_Certification_Detail" Relationship="Self.FK_Prod_Certification_Detail_PK_Prod_Certification" FromRole="Prod_Certification" ToRole="Prod_Certification_Detail" />
+  </EntityType>
+  <EntityType Name="Prod_Certification_Detail">
+    <Key>
+      <PropertyRef Name="Cert_ID" />
+      <PropertyRef Name="Detail_ID" />
+    </Key>
+    <Property Name="Cert_ID" Type="Int32" Nullable="false" />
+    <Property Name="Detail_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cert_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cert_TypeText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsCE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Cert_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_Cmd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_Norm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_ApproveDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Cert_ValidDate" Type="DateTime" Precision="0" />
+    <Property Name="Cert_Desc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_Desc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_Report" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_Report" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_CE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_CE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_CE_en_US" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_CE_en_US" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_CE_zh_CN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_CE_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_Check" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_Check" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_Check_en_US" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_Check_en_US" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cert_OrgFile_Check_zh_CN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Cert_File_Check_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsWebDW" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Prod_Certification" Relationship="Self.FK_Prod_Certification_Detail_PK_Prod_Certification" FromRole="Prod_Certification_Detail" ToRole="Prod_Certification" />
+  </EntityType>
+  <EntityType Name="Prod_Class">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_Name_zh_TW" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_Name_en_US" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Class_Name_zh_CN" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Display_PKWeb" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_File_SOP">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SOP_File" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOP_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Prod_Item" Relationship="Self.FK_Prod_File_SOP_PK_Prod_Item" FromRole="Prod_File_SOP" ToRole="Prod_Item" />
+  </EntityType>
+  <EntityType Name="Prod_Info">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Info1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Info2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Info3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Info4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Info5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Prod_Item">
+    <Key>
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="DBS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Item_No" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Warehouse_Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_zh_TW" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_zh_CN" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_en_US" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Desc" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="BarCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Catelog_Vol" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Page" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Ship_From" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Of_Listing" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Stop_Offer_Date" Type="DateTime" Precision="0" />
+    <Property Name="Substitute_Model_No_TW" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Substitute_Model_No_SH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Substitute_Model_No_SZ" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Cases_Of_Failure_Date_TW" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Cases_Of_Failure_Date_SH" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Cases_Of_Failure_Date_SZ" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Patent_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Logo_Printing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_PW_L" Type="Double" />
+    <Property Name="Pub_PW_W" Type="Double" />
+    <Property Name="Pub_PW_H" Type="Double" />
+    <Property Name="Pub_PW_Other" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_zh_TW" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_en_US" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_zh_CN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_IP_Net_Weight" Type="Double" />
+    <Property Name="Pub_IP_Weight" Type="Decimal" Precision="16" Scale="6" />
+    <Property Name="Pub_IP_L" Type="Double" />
+    <Property Name="Pub_IP_W" Type="Double" />
+    <Property Name="Pub_IP_H" Type="Double" />
+    <Property Name="Pub_IB_Qty" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_IB_NW" Type="Double" />
+    <Property Name="Pub_IB_GW" Type="Double" />
+    <Property Name="Pub_IB_L" Type="Double" />
+    <Property Name="Pub_IB_W" Type="Double" />
+    <Property Name="Pub_IB_H" Type="Double" />
+    <Property Name="Pub_IB_CUFT" Type="Double" />
+    <Property Name="Pub_Carton_Qty_CTN" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_NW" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_GW" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_L" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_W" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_H" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_CUFT" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_QC_Category" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Recommended" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Pub_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Features_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Card_Model_No" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Alternate2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Use" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Accessories" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Select_ModelNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Compare_ModelNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PDF_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MOQ" Type="Int32" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Prod_File_SOP" Relationship="Self.FK_Prod_File_SOP_PK_Prod_Item" FromRole="Prod_Item" ToRole="Prod_File_SOP" />
+    <NavigationProperty Name="Prod_News_Models" Relationship="Self.FK_Prod_News_Models_PK_Prod_Item" FromRole="Prod_Item" ToRole="Prod_News_Models" />
+    <NavigationProperty Name="Prod_News_SubModels" Relationship="Self.FK_Prod_News_SubModels_PK_Prod_Item" FromRole="Prod_Item" ToRole="Prod_News_SubModels" />
+    <NavigationProperty Name="Prod_Rel_PartNo" Relationship="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No" FromRole="Prod_Item" ToRole="Prod_Rel_PartNo" />
+    <NavigationProperty Name="Prod_Rel_PartNo1" Relationship="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No" FromRole="Prod_Item" ToRole="Prod_Rel_PartNo" />
+    <NavigationProperty Name="Prod_Spec" Relationship="Self.Prod_Item_Rel_Spec" FromRole="Prod_Item" ToRole="Prod_Spec" />
+  </EntityType>
+  <EntityType Name="Prod_MallPic">
+    <Key>
+      <PropertyRef Name="PMID" />
+    </Key>
+    <Property Name="PMID" Type="Int64" Nullable="false" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PicFile" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PicDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Prod_News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" />
+    <Property Name="ClassID" Type="Int32" Nullable="false" />
+    <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TimingType" Type="Int16" />
+    <Property Name="TimingDate" Type="DateTime" Precision="0" />
+    <Property Name="Desc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Desc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsMail" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+    <Property Name="Send_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Send_Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Prod_News_Attachment" Relationship="Self.FK_Prod_News_Attachment_PK_Prod_News" FromRole="Prod_News" ToRole="Prod_News_Attachment" />
+    <NavigationProperty Name="Prod_NewsClass" Relationship="Self.FK_Prod_News_PK_Prod_NewsClass" FromRole="Prod_News" ToRole="Prod_NewsClass" />
+    <NavigationProperty Name="Prod_News_Target" Relationship="Self.FK_Prod_News_Target_PK_Prod_News" FromRole="Prod_News" ToRole="Prod_News_Target" />
+  </EntityType>
+  <EntityType Name="Prod_News_Attachment">
+    <Key>
+      <PropertyRef Name="AttID" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" />
+    <Property Name="AttID" Type="Int32" Nullable="false" />
+    <Property Name="AttType" Type="Int16" />
+    <Property Name="AttOrgName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AttName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AttDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Prod_News" Relationship="Self.FK_Prod_News_Attachment_PK_Prod_News" FromRole="Prod_News_Attachment" ToRole="Prod_News" />
+  </EntityType>
+  <EntityType Name="Prod_News_Models">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prod_Item" Relationship="Self.FK_Prod_News_Models_PK_Prod_Item" FromRole="Prod_News_Models" ToRole="Prod_Item" />
+  </EntityType>
+  <EntityType Name="Prod_News_SubModels">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prod_Item" Relationship="Self.FK_Prod_News_SubModels_PK_Prod_Item" FromRole="Prod_News_SubModels" ToRole="Prod_Item" />
+  </EntityType>
+  <EntityType Name="Prod_News_Target">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="TargetID" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" />
+    <Property Name="TargetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prod_News" Relationship="Self.FK_Prod_News_Target_PK_Prod_News" FromRole="Prod_News_Target" ToRole="Prod_News" />
+  </EntityType>
+  <EntityType Name="Prod_NewsClass">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="Int32" Nullable="false" />
+    <Property Name="ClassName_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassName_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClassName_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpClass" Type="Int32" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_News" Relationship="Self.FK_Prod_News_PK_Prod_NewsClass" FromRole="Prod_NewsClass" ToRole="Prod_News" />
+  </EntityType>
+  <EntityType Name="Prod_PDF_byClass">
+    <Key>
+      <PropertyRef Name="CateID" />
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="CateID" Type="Int32" Nullable="false" />
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_PDF_byItem">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="CateID" />
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CateID" Type="Int32" Nullable="false" />
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Rel_PartNo">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Part_No" />
+    </Key>
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Part_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Prod_Item" Relationship="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No" FromRole="Prod_Rel_PartNo" ToRole="Prod_Item" />
+    <NavigationProperty Name="Prod_Item1" Relationship="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No" FromRole="Prod_Rel_PartNo" ToRole="Prod_Item" />
+  </EntityType>
+  <EntityType Name="Prod_Spec">
+    <Key>
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecName_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecName_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpecName_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsRequired" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SpecDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec_Rel_Category" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec" FromRole="Prod_Spec" ToRole="Prod_Spec_Rel_Category" />
+    <NavigationProperty Name="Icon_Pics" Relationship="Self.Icon_Rel_Spec" FromRole="Prod_Spec" ToRole="Icon_Pics" />
+    <NavigationProperty Name="Prod_Item" Relationship="Self.Prod_Item_Rel_Spec" FromRole="Prod_Spec" ToRole="Prod_Item" />
+    <NavigationProperty Name="Prod_Spec_Class" Relationship="Self.Prod_SpecClass_Rel_Spec" FromRole="Prod_Spec" ToRole="Prod_Spec_Class" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Category">
+    <Key>
+      <PropertyRef Name="CateID" />
+    </Key>
+    <Property Name="CateID" Type="Int32" Nullable="false" />
+    <Property Name="CateName_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CateName_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CateName_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec_Rel_Category" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category" FromRole="Prod_Spec_Category" ToRole="Prod_Spec_Rel_Category" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Class">
+    <Key>
+      <PropertyRef Name="SpecClassID" />
+    </Key>
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ClassName_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassName_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClassName_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpClass" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec_Rel_Category" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class" FromRole="Prod_Spec_Class" ToRole="Prod_Spec_Rel_Category" />
+    <NavigationProperty Name="Prod_Spec" Relationship="Self.Prod_SpecClass_Rel_Spec" FromRole="Prod_Spec_Class" ToRole="Prod_Spec" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_List">
+    <Key>
+      <PropertyRef Name="Spec_ListID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Spec_ListID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CateID" Type="Int32" />
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ListSymbol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ListValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Option">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OptionGName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionValue" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionName_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Spec_OptionName_en_US" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Spec_OptionName_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Spec_OptionPic" Type="Int32" />
+    <Property Name="Spec_OptionFile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec_OptionGroup" Relationship="Self.FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup" FromRole="Prod_Spec_Option" ToRole="Prod_Spec_OptionGroup" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_OptionGroup">
+    <Key>
+      <PropertyRef Name="OptionGID" />
+    </Key>
+    <Property Name="OptionGID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OptionGName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec_Option" Relationship="Self.FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup" FromRole="Prod_Spec_OptionGroup" ToRole="Prod_Spec_Option" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Rel_Category">
+    <Key>
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+      <PropertyRef Name="CateID" />
+    </Key>
+    <Property Name="SpecClassID" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SpecID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CateID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prod_Spec" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec" FromRole="Prod_Spec_Rel_Category" ToRole="Prod_Spec" />
+    <NavigationProperty Name="Prod_Spec_Category" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category" FromRole="Prod_Spec_Rel_Category" ToRole="Prod_Spec_Category" />
+    <NavigationProperty Name="Prod_Spec_Class" Relationship="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class" FromRole="Prod_Spec_Rel_Category" ToRole="Prod_Spec_Class" />
+  </EntityType>
+  <EntityType Name="ProdPic_Figure">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Pic01" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic01_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic01_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic02" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic02_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic02_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic03" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic03_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic03_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic04" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic04_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic04_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic05" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic05_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic05_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic06" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic06_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic06_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic07" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic07_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic07_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic08" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic08_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic08_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Txt01_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt02_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt03_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt04_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt05_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt06_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt07_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt08_zh_TW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt01_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt02_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt03_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt04_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt05_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt06_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt07_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt08_zh_CN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt01_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt02_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt03_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt04_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt05_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt06_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt07_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Txt08_en_US" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProdPic_Group">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Pic_Class" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Pic_Class" Type="Int32" Nullable="false" />
+    <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Pic_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic_File" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProdPic_Param">
+    <Key>
+      <PropertyRef Name="Param_ID" />
+      <PropertyRef Name="Pic_Class" />
+    </Key>
+    <Property Name="Param_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pic_Class" Type="Int32" Nullable="false" />
+    <Property Name="Param_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Param_RelColumn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProdPic_Photo">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Pic01" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic01_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic01_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic02" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic02_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic02_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic03" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic03_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic03_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic04" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic04_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic04_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic05" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic05_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic05_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic06" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic06_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic06_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic07" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic07_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic07_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic08" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic08_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic08_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="Pic09" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pic09_OrgFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pic09_UpdTime" Type="DateTime" Precision="3" />
+    <Property Name="PicSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Update_Who" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProdPic_Rel">
+    <Key>
+      <PropertyRef Name="Pic_Class" />
+      <PropertyRef Name="Pic_Column" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Rel_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pic_Class" Type="Int32" Nullable="false" />
+    <Property Name="Pic_Column" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Program">
+    <Key>
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Prog_ID" Type="Int32" Nullable="false" />
+    <Property Name="Prog_Name_zh_TW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prog_Name_en_US" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prog_Name_zh_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prog_Link" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Up_Id" Type="Int32" Nullable="false" />
+    <Property Name="Lv" Type="Int32" Nullable="false" />
+    <Property Name="Lv_Path" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Lv_Path_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Child_Cnt" Type="Int32" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LeftMenu_Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Sort" Type="Int16" Nullable="false" />
+    <Property Name="CssStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User_Group_Rel_Program" Relationship="Self.FK_User_Group_Rel_Program_PK_Program" FromRole="Program" ToRole="User_Group_Rel_Program" />
+    <NavigationProperty Name="User_Profile_Rel_Program" Relationship="Self.FK_User_Profile_Rel_Program_PK_Program" FromRole="Program" ToRole="User_Profile_Rel_Program" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_Group_Rel_Program">
+    <Key>
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Guid" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prog_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_User_Group_Rel_Program_PK_Program" FromRole="User_Group_Rel_Program" ToRole="Program" />
+  </EntityType>
+  <EntityType Name="User_Profile_Rel_Program">
+    <Key>
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Guid" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prog_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_User_Profile_Rel_Program_PK_Program" FromRole="User_Profile_Rel_Program" ToRole="Program" />
+  </EntityType>
+  <EntityType Name="Warehouse_Class">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_Name_zh_TW" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_Name_en_US" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Class_Name_zh_CN" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Display" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERP_QMSME">
+    <Key>
+      <PropertyRef Name="DBS" />
+      <PropertyRef Name="ME001" />
+    </Key>
+    <Property Name="DBS" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ME001" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ME002" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="ME003" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="ME004" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="ME005" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ME006" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ERP_QMSMG">
+    <Key>
+      <PropertyRef Name="DBS" />
+      <PropertyRef Name="MG001" />
+      <PropertyRef Name="MG002" />
+      <PropertyRef Name="MG003" />
+    </Key>
+    <Property Name="DBS" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MG001" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MG002" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MG003" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MG004" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="MG005" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="MG006" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MG007" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prod_ItemSZ">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Item_No" />
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Model_No" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Item_No" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Warehouse_Class_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_zh_TW" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_zh_CN" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Name_en_US" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Desc" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="BarCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Catelog_Vol" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Page" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ship_From" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Of_Listing" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Stop_Offer_Date" Type="DateTime" Precision="0" />
+    <Property Name="Substitute_Model_No_SZ" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Cases_Of_Failure_Date_SZ" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_zh_TW" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_en_US" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Individual_Packing_zh_CN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_IP_Weight" Type="Decimal" Precision="16" Scale="6" />
+    <Property Name="Pub_IB_Qty" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty_CTN" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_NW" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_GW" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_L" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_W" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_H" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_CUFT" Type="Decimal" Precision="16" Scale="3" />
+    <Property Name="Pub_QC_Category" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Card_Model_No" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Alternate2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pub_Message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MOQ" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Icon_Pics_PK_Icon">
+    <End Role="Icon" Type="Self.Icon" Multiplicity="1" />
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon">
+        <PropertyRef Name="Icon_ID" />
+      </Principal>
+      <Dependent Role="Icon_Pics">
+        <PropertyRef Name="Icon_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_PKWeb" Type="Self.Icon_Rel_PKWeb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_PKWeb">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_Certification_PK_Icon_Pics">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_Certification" Type="Self.Icon_Rel_Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_Certification">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup">
+    <End Role="Prod_BOMSpec_OptionGroup" Type="Self.Prod_BOMSpec_OptionGroup" Multiplicity="1" />
+    <End Role="Prod_BOMSpec_Option" Type="Self.Prod_BOMSpec_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_BOMSpec_OptionGroup">
+        <PropertyRef Name="OptionGID" />
+      </Principal>
+      <Dependent Role="Prod_BOMSpec_Option">
+        <PropertyRef Name="OptionGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Certification_Detail_PK_Prod_Certification">
+    <End Role="Prod_Certification" Type="Self.Prod_Certification" Multiplicity="1" />
+    <End Role="Prod_Certification_Detail" Type="Self.Prod_Certification_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Certification">
+        <PropertyRef Name="Cert_ID" />
+      </Principal>
+      <Dependent Role="Prod_Certification_Detail">
+        <PropertyRef Name="Cert_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_File_SOP_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_File_SOP" Type="Self.Prod_File_SOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_File_SOP">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Models_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_News_Models" Type="Self.Prod_News_Models" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_News_Models">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_SubModels_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_News_SubModels" Type="Self.Prod_News_SubModels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_News_SubModels">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_Rel_PartNo" Type="Self.Prod_Rel_PartNo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_Rel_PartNo">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_Rel_PartNo" Type="Self.Prod_Rel_PartNo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_Rel_PartNo">
+        <PropertyRef Name="Part_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Attachment_PK_Prod_News">
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="1" />
+    <End Role="Prod_News_Attachment" Type="Self.Prod_News_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_News">
+        <PropertyRef Name="NewsID" />
+      </Principal>
+      <Dependent Role="Prod_News_Attachment">
+        <PropertyRef Name="NewsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_PK_Prod_NewsClass">
+    <End Role="Prod_NewsClass" Type="Self.Prod_NewsClass" Multiplicity="1" />
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_NewsClass">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="Prod_News">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Target_PK_Prod_News">
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="1" />
+    <End Role="Prod_News_Target" Type="Self.Prod_News_Target" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_News">
+        <PropertyRef Name="NewsID" />
+      </Principal>
+      <Dependent Role="Prod_News_Target">
+        <PropertyRef Name="NewsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec">
+        <PropertyRef Name="SpecID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category">
+    <End Role="Prod_Spec_Category" Type="Self.Prod_Spec_Category" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_Category">
+        <PropertyRef Name="CateID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="CateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class">
+    <End Role="Prod_Spec_Class" Type="Self.Prod_Spec_Class" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_Class">
+        <PropertyRef Name="SpecClassID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="SpecClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup">
+    <End Role="Prod_Spec_OptionGroup" Type="Self.Prod_Spec_OptionGroup" Multiplicity="1" />
+    <End Role="Prod_Spec_Option" Type="Self.Prod_Spec_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_OptionGroup">
+        <PropertyRef Name="OptionGID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Option">
+        <PropertyRef Name="OptionGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Group_Rel_Program_PK_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="User_Group_Rel_Program" Type="Self.User_Group_Rel_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Prog_ID" />
+      </Principal>
+      <Dependent Role="User_Group_Rel_Program">
+        <PropertyRef Name="Prog_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Profile_Rel_Program_PK_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="User_Profile_Rel_Program" Type="Self.User_Profile_Rel_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Prog_ID" />
+      </Principal>
+      <Dependent Role="User_Profile_Rel_Program">
+        <PropertyRef Name="Prog_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Icon_Rel_BOMSpec">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="*" />
+    <End Role="Prod_BOMSpec" Type="Self.Prod_BOMSpec" Multiplicity="*" />
+  </Association>
+  <Association Name="Icon_Rel_Spec">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="*" />
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="*" />
+  </Association>
+  <Association Name="Prod_Item_Rel_Spec">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="*" />
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="*" />
+  </Association>
+  <Association Name="Prod_SpecClass_Rel_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="*" />
+    <End Role="Prod_Spec_Class" Type="Self.Prod_Spec_Class" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ProductCenterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Icon" EntityType="Self.Icon" />
+    <EntitySet Name="Icon_Pics" EntityType="Self.Icon_Pics" />
+    <EntitySet Name="Icon_Rel_Certification" EntityType="Self.Icon_Rel_Certification" />
+    <EntitySet Name="Icon_Rel_Certification_eService" EntityType="Self.Icon_Rel_Certification_eService" />
+    <EntitySet Name="Icon_Rel_PKWeb" EntityType="Self.Icon_Rel_PKWeb" />
+    <EntitySet Name="Icon_Rel_Spec_eService" EntityType="Self.Icon_Rel_Spec_eService" />
+    <EntitySet Name="Log_AD" EntityType="Self.Log_AD" />
+    <EntitySet Name="Log_Record" EntityType="Self.Log_Record" />
+    <EntitySet Name="Log_SendMail" EntityType="Self.Log_SendMail" />
+    <EntitySet Name="Log_User_Group_Rel_Program" EntityType="Self.Log_User_Group_Rel_Program" />
+    <EntitySet Name="Log_User_Profile_Rel_Program" EntityType="Self.Log_User_Profile_Rel_Program" />
+    <EntitySet Name="Param_Corp" EntityType="Self.Param_Corp" />
+    <EntitySet Name="Param_Dictionary" EntityType="Self.Param_Dictionary" />
+    <EntitySet Name="Param_ExchangeRate" EntityType="Self.Param_ExchangeRate" />
+    <EntitySet Name="Param_Public" EntityType="Self.Param_Public" />
+    <EntitySet Name="Prod_BOMSpec" EntityType="Self.Prod_BOMSpec" />
+    <EntitySet Name="Prod_BOMSpec_List" EntityType="Self.Prod_BOMSpec_List" />
+    <EntitySet Name="Prod_BOMSpec_Option" EntityType="Self.Prod_BOMSpec_Option" />
+    <EntitySet Name="Prod_BOMSpec_OptionGroup" EntityType="Self.Prod_BOMSpec_OptionGroup" />
+    <EntitySet Name="Prod_Certification" EntityType="Self.Prod_Certification" />
+    <EntitySet Name="Prod_Certification_Detail" EntityType="Self.Prod_Certification_Detail" />
+    <EntitySet Name="Prod_Class" EntityType="Self.Prod_Class" />
+    <EntitySet Name="Prod_File_SOP" EntityType="Self.Prod_File_SOP" />
+    <EntitySet Name="Prod_Info" EntityType="Self.Prod_Info" />
+    <EntitySet Name="Prod_Item" EntityType="Self.Prod_Item" />
+    <EntitySet Name="Prod_MallPic" EntityType="Self.Prod_MallPic" />
+    <EntitySet Name="Prod_News" EntityType="Self.Prod_News" />
+    <EntitySet Name="Prod_News_Attachment" EntityType="Self.Prod_News_Attachment" />
+    <EntitySet Name="Prod_News_Models" EntityType="Self.Prod_News_Models" />
+    <EntitySet Name="Prod_News_SubModels" EntityType="Self.Prod_News_SubModels" />
+    <EntitySet Name="Prod_News_Target" EntityType="Self.Prod_News_Target" />
+    <EntitySet Name="Prod_NewsClass" EntityType="Self.Prod_NewsClass" />
+    <EntitySet Name="Prod_PDF_byClass" EntityType="Self.Prod_PDF_byClass" />
+    <EntitySet Name="Prod_PDF_byItem" EntityType="Self.Prod_PDF_byItem" />
+    <EntitySet Name="Prod_Rel_PartNo" EntityType="Self.Prod_Rel_PartNo" />
+    <EntitySet Name="Prod_Spec" EntityType="Self.Prod_Spec" />
+    <EntitySet Name="Prod_Spec_Category" EntityType="Self.Prod_Spec_Category" />
+    <EntitySet Name="Prod_Spec_Class" EntityType="Self.Prod_Spec_Class" />
+    <EntitySet Name="Prod_Spec_List" EntityType="Self.Prod_Spec_List" />
+    <EntitySet Name="Prod_Spec_Option" EntityType="Self.Prod_Spec_Option" />
+    <EntitySet Name="Prod_Spec_OptionGroup" EntityType="Self.Prod_Spec_OptionGroup" />
+    <EntitySet Name="Prod_Spec_Rel_Category" EntityType="Self.Prod_Spec_Rel_Category" />
+    <EntitySet Name="ProdPic_Figure" EntityType="Self.ProdPic_Figure" />
+    <EntitySet Name="ProdPic_Group" EntityType="Self.ProdPic_Group" />
+    <EntitySet Name="ProdPic_Param" EntityType="Self.ProdPic_Param" />
+    <EntitySet Name="ProdPic_Photo" EntityType="Self.ProdPic_Photo" />
+    <EntitySet Name="ProdPic_Rel" EntityType="Self.ProdPic_Rel" />
+    <EntitySet Name="Program" EntityType="Self.Program" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User_Group_Rel_Program" EntityType="Self.User_Group_Rel_Program" />
+    <EntitySet Name="User_Profile_Rel_Program" EntityType="Self.User_Profile_Rel_Program" />
+    <EntitySet Name="Warehouse_Class" EntityType="Self.Warehouse_Class" />
+    <EntitySet Name="ERP_QMSME" EntityType="Self.ERP_QMSME" />
+    <EntitySet Name="ERP_QMSMG" EntityType="Self.ERP_QMSMG" />
+    <EntitySet Name="Prod_ItemSZ" EntityType="Self.Prod_ItemSZ" />
+    <AssociationSet Name="FK_Icon_Pics_PK_Icon" Association="Self.FK_Icon_Pics_PK_Icon">
+      <End Role="Icon" EntitySet="Icon" />
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec" Association="Self.FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_PKWeb" EntitySet="Icon_Rel_PKWeb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_Certification_PK_Icon_Pics" Association="Self.FK_Icon_Rel_Certification_PK_Icon_Pics">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_Certification" EntitySet="Icon_Rel_Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup" Association="Self.FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup">
+      <End Role="Prod_BOMSpec_OptionGroup" EntitySet="Prod_BOMSpec_OptionGroup" />
+      <End Role="Prod_BOMSpec_Option" EntitySet="Prod_BOMSpec_Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Certification_Detail_PK_Prod_Certification" Association="Self.FK_Prod_Certification_Detail_PK_Prod_Certification">
+      <End Role="Prod_Certification" EntitySet="Prod_Certification" />
+      <End Role="Prod_Certification_Detail" EntitySet="Prod_Certification_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_File_SOP_PK_Prod_Item" Association="Self.FK_Prod_File_SOP_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_File_SOP" EntitySet="Prod_File_SOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Models_PK_Prod_Item" Association="Self.FK_Prod_News_Models_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_News_Models" EntitySet="Prod_News_Models" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_SubModels_PK_Prod_Item" Association="Self.FK_Prod_News_SubModels_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_News_SubModels" EntitySet="Prod_News_SubModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No" Association="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Rel_PartNo" EntitySet="Prod_Rel_PartNo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No" Association="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Rel_PartNo" EntitySet="Prod_Rel_PartNo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Attachment_PK_Prod_News" Association="Self.FK_Prod_News_Attachment_PK_Prod_News">
+      <End Role="Prod_News" EntitySet="Prod_News" />
+      <End Role="Prod_News_Attachment" EntitySet="Prod_News_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_PK_Prod_NewsClass" Association="Self.FK_Prod_News_PK_Prod_NewsClass">
+      <End Role="Prod_NewsClass" EntitySet="Prod_NewsClass" />
+      <End Role="Prod_News" EntitySet="Prod_News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Target_PK_Prod_News" Association="Self.FK_Prod_News_Target_PK_Prod_News">
+      <End Role="Prod_News" EntitySet="Prod_News" />
+      <End Role="Prod_News_Target" EntitySet="Prod_News_Target" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category">
+      <End Role="Prod_Spec_Category" EntitySet="Prod_Spec_Category" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class">
+      <End Role="Prod_Spec_Class" EntitySet="Prod_Spec_Class" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup" Association="Self.FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup">
+      <End Role="Prod_Spec_OptionGroup" EntitySet="Prod_Spec_OptionGroup" />
+      <End Role="Prod_Spec_Option" EntitySet="Prod_Spec_Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Group_Rel_Program_PK_Program" Association="Self.FK_User_Group_Rel_Program_PK_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="User_Group_Rel_Program" EntitySet="User_Group_Rel_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Profile_Rel_Program_PK_Program" Association="Self.FK_User_Profile_Rel_Program_PK_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="User_Profile_Rel_Program" EntitySet="User_Profile_Rel_Program" />
+    </AssociationSet>
+    <AssociationSet Name="Icon_Rel_BOMSpec" Association="Self.Icon_Rel_BOMSpec">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Prod_BOMSpec" EntitySet="Prod_BOMSpec" />
+    </AssociationSet>
+    <AssociationSet Name="Icon_Rel_Spec" Association="Self.Icon_Rel_Spec">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="Prod_Item_Rel_Spec" Association="Self.Prod_Item_Rel_Spec">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="Prod_SpecClass_Rel_Spec" Association="Self.Prod_SpecClass_Rel_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Prod_Spec_Class" EntitySet="Prod_Spec_Class" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

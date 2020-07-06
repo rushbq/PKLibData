@@ -1,0 +1,12 @@
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\bin\PKLibrary.dll.config
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\bin\PKLibrary.dll
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\bin\PKLibrary.pdb
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\obj\Debug\PKLibrary.csprojResolveAssemblyReference.cache
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\obj\Debug\PKLibrary.dll
+C:\_MyWork\_Prokits\寶工測試站\PKLibrary\PKLibrary\obj\Debug\PKLibrary.pdb
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary.csprojResolveAssemblyReference.cache
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary_Data.dll.config
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary_Data.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary_Data.pdb
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary_Data.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Debug\PKLibrary_Data.pdb

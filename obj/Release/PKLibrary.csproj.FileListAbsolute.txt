@@ -1,0 +1,5 @@
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary.dll.config
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\bin\PKLibrary.pdb
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Release\PKLibrary.dll
+C:\_MyWork\_Prokits\PKLibrary\PKLibrary\obj\Release\PKLibrary.pdb

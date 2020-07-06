@@ -1,0 +1,1463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ProductCenter.dbo.ERP_QMSME' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="ERP_QMSME">
+    <Key>
+      <PropertyRef Name="DBS" />
+      <PropertyRef Name="ME001" />
+    </Key>
+    <Property Name="DBS" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="ME001" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="ME002" Type="nvarchar" MaxLength="40" />
+    <Property Name="ME003" Type="nvarchar" MaxLength="2" />
+    <Property Name="ME004" Type="nvarchar" MaxLength="2" />
+    <Property Name="ME005" Type="nvarchar" MaxLength="255" />
+    <Property Name="ME006" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ProductCenter.dbo.ERP_QMSMG' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="ERP_QMSMG">
+    <Key>
+      <PropertyRef Name="DBS" />
+      <PropertyRef Name="MG001" />
+      <PropertyRef Name="MG002" />
+      <PropertyRef Name="MG003" />
+    </Key>
+    <Property Name="DBS" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="MG001" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="MG002" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="MG003" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="MG004" Type="nvarchar" MaxLength="2" />
+    <Property Name="MG005" Type="nvarchar" MaxLength="2" />
+    <Property Name="MG006" Type="nvarchar" MaxLength="255" />
+    <Property Name="MG007" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Icon">
+    <Key>
+      <PropertyRef Name="Icon_ID" />
+    </Key>
+    <Property Name="Icon_ID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Icon_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IconName_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="IconName_en_US" Type="nvarchar" MaxLength="150" />
+    <Property Name="IconName_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Icon_Pics">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Icon_ID" Type="int" Nullable="false" />
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Pic_File" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_BOMSpec">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="BOM_SpecID" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="BOM_SpecID" Type="nchar" MaxLength="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Certification">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Cert_ID" />
+      <PropertyRef Name="Detail_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Cert_ID" Type="int" Nullable="false" />
+    <Property Name="Detail_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Certification_eService">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_PKWeb">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Spec">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icon_Rel_Spec_eService">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_AD">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="bigint" Nullable="false" />
+    <Property Name="Proc_Time" Type="datetime" />
+    <Property Name="Proc_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Proc_Action" Type="nvarchar" MaxLength="10" />
+    <Property Name="Proc_Account" Type="nvarchar" MaxLength="50" />
+    <Property Name="Proc_Desc" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_Record">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="bigint" Nullable="false" />
+    <Property Name="Proc_Time" Type="datetime" />
+    <Property Name="Proc_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Proc_Action" Type="nvarchar" MaxLength="10" />
+    <Property Name="Proc_Desc" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_SendMail">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="bigint" Nullable="false" />
+    <Property Name="Sender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Reciever" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CC" Type="nvarchar(max)" />
+    <Property Name="Bcc" Type="nvarchar(max)" />
+    <Property Name="FromFunc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Send_Time" Type="datetime" Nullable="false" />
+    <Property Name="Send_Status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Send_Desc" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_User_Group_Rel_Program">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+      <PropertyRef Name="LogType" />
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="bigint" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Guid" Type="varchar" MaxLength="38" Nullable="false" />
+    <Property Name="Prog_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_User_Profile_Rel_Program">
+    <Key>
+      <PropertyRef Name="Log_ID" />
+      <PropertyRef Name="LogType" />
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Log_ID" Type="bigint" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Guid" Type="varchar" MaxLength="38" Nullable="false" />
+    <Property Name="Prog_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Param_Corp">
+    <Key>
+      <PropertyRef Name="Corp_ID" />
+    </Key>
+    <Property Name="Corp_ID" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Corp_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Original_Currency" Type="varchar" MaxLength="5" />
+    <Property Name="Local_Currency" Type="varchar" MaxLength="5" />
+    <Property Name="Display" Type="char" MaxLength="1" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <EntityType Name="Param_Dictionary">
+    <Key>
+      <PropertyRef Name="Spec_Column" />
+    </Key>
+    <Property Name="Spec_Column" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Column_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Dic_zh_TW" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dic_en_US" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dic_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Disp_zh_TW" Type="nvarchar" MaxLength="50" />
+    <Property Name="Disp_en_US" Type="nvarchar" MaxLength="50" />
+    <Property Name="Disp_zh_CN" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Param_ExchangeRate">
+    <Key>
+      <PropertyRef Name="Currency_From" />
+      <PropertyRef Name="Currency_To" />
+    </Key>
+    <Property Name="Currency_From" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Currency_To" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ExchangeRate" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Param_Public">
+    <Key>
+      <PropertyRef Name="Param_Kind" />
+      <PropertyRef Name="Param_Name" />
+    </Key>
+    <Property Name="Param_Kind" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Param_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Param_Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="Param_Desc" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec">
+    <Key>
+      <PropertyRef Name="BOM_SpecID" />
+    </Key>
+    <Property Name="BOM_SpecID" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="SpecName_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SpecName_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="SpecName_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecType" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IsRequired" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" />
+    <Property Name="SpecDESC" Type="nvarchar" MaxLength="50" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_List">
+    <Key>
+      <PropertyRef Name="Spec_ListID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Spec_ListID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="CateID" Type="int" />
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="BOM_SpecID" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="RowID" Type="int" />
+    <Property Name="ListSymbol" Type="nvarchar" MaxLength="20" />
+    <Property Name="ListValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_Option">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="int" Nullable="false" />
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="OptionGName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Spec_OptionValue" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="Spec_OptionName_zh_TW" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Spec_OptionName_en_US" Type="nvarchar" MaxLength="200" />
+    <Property Name="Spec_OptionName_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Spec_OptionPic" Type="int" />
+    <Property Name="Spec_OptionFile" Type="nvarchar" MaxLength="30" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_BOMSpec_OptionGroup">
+    <Key>
+      <PropertyRef Name="OptionGID" />
+    </Key>
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="OptionGName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Certification">
+    <Key>
+      <PropertyRef Name="Cert_ID" />
+    </Key>
+    <Property Name="Cert_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Doc_Path" Type="nvarchar" MaxLength="20" />
+    <Property Name="Self_Cert" Type="char" MaxLength="1" />
+    <Property Name="Supplier_ItemNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_Certification_Detail">
+    <Key>
+      <PropertyRef Name="Cert_ID" />
+      <PropertyRef Name="Detail_ID" />
+    </Key>
+    <Property Name="Cert_ID" Type="int" Nullable="false" />
+    <Property Name="Detail_ID" Type="int" Nullable="false" />
+    <Property Name="Cert_Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Cert_TypeText" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsCE" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Cert_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cert_Cmd" Type="nvarchar(max)" />
+    <Property Name="Cert_Norm" Type="nvarchar(max)" />
+    <Property Name="Cert_ApproveDate" Type="date" Nullable="false" />
+    <Property Name="Cert_ValidDate" Type="date" />
+    <Property Name="Cert_Desc1" Type="nvarchar(max)" />
+    <Property Name="Cert_Desc2" Type="nvarchar(max)" />
+    <Property Name="Cert_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_Report" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_Report" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_CE" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_CE" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_CE_en_US" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_CE_en_US" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_CE_zh_CN" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_CE_zh_CN" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_Check" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_Check" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_Check_en_US" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_Check_en_US" Type="varchar" MaxLength="50" />
+    <Property Name="Cert_OrgFile_Check_zh_CN" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cert_File_Check_zh_CN" Type="varchar" MaxLength="50" />
+    <Property Name="IsWebDW" Type="char" MaxLength="1" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_Class">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Class_Name_zh_TW" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Class_Name_en_US" Type="nvarchar" MaxLength="40" />
+    <Property Name="Class_Name_zh_CN" Type="nvarchar" MaxLength="40" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Display_PKWeb" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_File_SOP">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="SOP_File" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SOP_OrgFile" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Info">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Lang" />
+    </Key>
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Info1" Type="ntext" />
+    <Property Name="Info2" Type="ntext" />
+    <Property Name="Info3" Type="ntext" />
+    <Property Name="Info4" Type="ntext" />
+    <Property Name="Info5" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_Item">
+    <Key>
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="DBS" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Item_No" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" />
+    <Property Name="Class_ID" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Warehouse_Class_ID" Type="nvarchar" MaxLength="6" />
+    <Property Name="Model_Name_zh_TW" Type="nvarchar" MaxLength="120" />
+    <Property Name="Model_Name_zh_CN" Type="nvarchar" MaxLength="120" />
+    <Property Name="Model_Name_en_US" Type="nvarchar" MaxLength="255" />
+    <Property Name="Model_Desc" Type="nvarchar" MaxLength="120" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="Catelog_Vol" Type="nvarchar" MaxLength="30" />
+    <Property Name="Page" Type="nvarchar" MaxLength="5" />
+    <Property Name="Ship_From" Type="nvarchar" MaxLength="255" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" />
+    <Property Name="Date_Of_Listing" Type="nvarchar" MaxLength="10" />
+    <Property Name="Stop_Offer_Date" Type="date" />
+    <Property Name="Substitute_Model_No_TW" Type="nvarchar" MaxLength="255" />
+    <Property Name="Substitute_Model_No_SH" Type="nvarchar" MaxLength="255" />
+    <Property Name="Substitute_Model_No_SZ" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cases_Of_Failure_Date_TW" Type="nvarchar" MaxLength="8" />
+    <Property Name="Cases_Of_Failure_Date_SH" Type="nvarchar" MaxLength="8" />
+    <Property Name="Cases_Of_Failure_Date_SZ" Type="nvarchar" MaxLength="8" />
+    <Property Name="Pub_Patent_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pub_Logo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pub_Logo_Printing" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pub_PW_L" Type="float" />
+    <Property Name="Pub_PW_W" Type="float" />
+    <Property Name="Pub_PW_H" Type="float" />
+    <Property Name="Pub_PW_Other" Type="nvarchar" MaxLength="500" />
+    <Property Name="Pub_Individual_Packing_zh_TW" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Individual_Packing_en_US" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Individual_Packing_zh_CN" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_IP_Net_Weight" Type="float" />
+    <Property Name="Pub_IP_Weight" Type="numeric" Precision="16" Scale="6" />
+    <Property Name="Pub_IP_L" Type="float" />
+    <Property Name="Pub_IP_W" Type="float" />
+    <Property Name="Pub_IP_H" Type="float" />
+    <Property Name="Pub_IB_Qty" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_IB_NW" Type="float" />
+    <Property Name="Pub_IB_GW" Type="float" />
+    <Property Name="Pub_IB_L" Type="float" />
+    <Property Name="Pub_IB_W" Type="float" />
+    <Property Name="Pub_IB_H" Type="float" />
+    <Property Name="Pub_IB_CUFT" Type="float" />
+    <Property Name="Pub_Carton_Qty_CTN" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_NW" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_GW" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_L" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_W" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_H" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_CUFT" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_QC_Category" Type="nvarchar" MaxLength="6" />
+    <Property Name="Pub_Recommended" Type="char" MaxLength="1" />
+    <Property Name="Pub_Notes" Type="nvarchar(max)" />
+    <Property Name="Pub_Features_Remark" Type="nvarchar(max)" />
+    <Property Name="Pub_Card_Model_No" Type="nvarchar" MaxLength="40" />
+    <Property Name="Pub_Alternate2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Message" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Use" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Accessories" Type="nvarchar" MaxLength="4" />
+    <Property Name="Pub_Select_ModelNo" Type="nvarchar(max)" />
+    <Property Name="Pub_Compare_ModelNo" Type="nvarchar(max)" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="PDF_Type" Type="varchar" MaxLength="10" />
+    <Property Name="MOQ" Type="int" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_Item_Rel_Spec">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ProductCenter.dbo.Prod_ItemSZ' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="Prod_ItemSZ">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Item_No" />
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Item_No" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Class_ID" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Warehouse_Class_ID" Type="nvarchar" MaxLength="6" />
+    <Property Name="Model_Name_zh_TW" Type="nvarchar" MaxLength="120" />
+    <Property Name="Model_Name_zh_CN" Type="nvarchar" MaxLength="120" />
+    <Property Name="Model_Name_en_US" Type="nvarchar" MaxLength="255" />
+    <Property Name="Model_Desc" Type="nvarchar" MaxLength="120" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="Catelog_Vol" Type="nvarchar" MaxLength="30" />
+    <Property Name="Page" Type="nvarchar" MaxLength="5" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" />
+    <Property Name="Ship_From" Type="nvarchar" MaxLength="255" />
+    <Property Name="Date_Of_Listing" Type="nvarchar" MaxLength="10" />
+    <Property Name="Stop_Offer_Date" Type="date" />
+    <Property Name="Substitute_Model_No_SZ" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cases_Of_Failure_Date_SZ" Type="nvarchar" MaxLength="8" />
+    <Property Name="Pub_Individual_Packing_zh_TW" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Individual_Packing_en_US" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Individual_Packing_zh_CN" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_IP_Weight" Type="numeric" Precision="16" Scale="6" />
+    <Property Name="Pub_IB_Qty" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty_CTN" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_Qty" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_NW" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_GW" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_Carton_L" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_W" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_H" Type="numeric" Precision="6" Scale="1" />
+    <Property Name="Pub_Carton_CUFT" Type="numeric" Precision="16" Scale="3" />
+    <Property Name="Pub_QC_Category" Type="nvarchar" MaxLength="6" />
+    <Property Name="Pub_Notes" Type="nvarchar(max)" />
+    <Property Name="Pub_Card_Model_No" Type="nvarchar" MaxLength="40" />
+    <Property Name="Pub_Alternate2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pub_Message" Type="nvarchar" MaxLength="255" />
+    <Property Name="MOQ" Type="int" />
+  </EntityType>
+  <EntityType Name="Prod_MallPic">
+    <Key>
+      <PropertyRef Name="PMID" />
+    </Key>
+    <Property Name="PMID" Type="bigint" Nullable="false" />
+    <Property Name="LangCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Model_No" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="PicFile" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="PicDesc" Type="nvarchar(max)" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="int" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="TimingType" Type="smallint" />
+    <Property Name="TimingDate" Type="smalldatetime" />
+    <Property Name="Desc1" Type="nvarchar(max)" />
+    <Property Name="Desc2" Type="nvarchar(max)" />
+    <Property Name="IsMail" Type="char" MaxLength="1" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+    <Property Name="Send_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Send_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Prod_News_Attachment">
+    <Key>
+      <PropertyRef Name="AttID" />
+    </Key>
+    <Property Name="NewsID" Type="int" Nullable="false" />
+    <Property Name="AttID" Type="int" Nullable="false" />
+    <Property Name="AttType" Type="smallint" />
+    <Property Name="AttOrgName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AttName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AttDesc" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Prod_News_Models">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="NewsID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_News_SubModels">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="NewsID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_News_Target">
+    <Key>
+      <PropertyRef Name="NewsID" />
+      <PropertyRef Name="TargetID" />
+    </Key>
+    <Property Name="NewsID" Type="int" Nullable="false" />
+    <Property Name="TargetID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_NewsClass">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="ClassName_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassName_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClassName_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpClass" Type="int" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_PDF_byClass">
+    <Key>
+      <PropertyRef Name="CateID" />
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="CateID" Type="int" Nullable="false" />
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_PDF_byItem">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="CateID" />
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="CateID" Type="int" Nullable="false" />
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Rel_PartNo">
+    <Key>
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Part_No" />
+    </Key>
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Part_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec">
+    <Key>
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="SpecName_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SpecName_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="SpecName_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecType" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IsRequired" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" />
+    <Property Name="SpecDESC" Type="nvarchar" MaxLength="50" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Category">
+    <Key>
+      <PropertyRef Name="CateID" />
+    </Key>
+    <Property Name="CateID" Type="int" Nullable="false" />
+    <Property Name="CateName_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CateName_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="CateName_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Class">
+    <Key>
+      <PropertyRef Name="SpecClassID" />
+    </Key>
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="ClassName_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassName_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClassName_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpClass" Type="nchar" MaxLength="5" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_List">
+    <Key>
+      <PropertyRef Name="Spec_ListID" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Spec_ListID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="CateID" Type="int" />
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="ListSymbol" Type="nvarchar" MaxLength="20" />
+    <Property Name="ListValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Option">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="int" Nullable="false" />
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="OptionGName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Spec_OptionValue" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="Spec_OptionName_zh_TW" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Spec_OptionName_en_US" Type="nvarchar" MaxLength="200" />
+    <Property Name="Spec_OptionName_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Spec_OptionPic" Type="int" />
+    <Property Name="Spec_OptionFile" Type="nvarchar" MaxLength="30" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_OptionGroup">
+    <Key>
+      <PropertyRef Name="OptionGID" />
+    </Key>
+    <Property Name="OptionGID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="OptionGName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_Spec_Rel_Category">
+    <Key>
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+      <PropertyRef Name="CateID" />
+    </Key>
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="CateID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prod_SpecClass_Rel_Spec">
+    <Key>
+      <PropertyRef Name="SpecClassID" />
+      <PropertyRef Name="SpecID" />
+    </Key>
+    <Property Name="SpecClassID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="SpecID" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProdPic_Figure">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Pic01" Type="varchar" MaxLength="30" />
+    <Property Name="Pic01_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic01_UpdTime" Type="datetime" />
+    <Property Name="Pic02" Type="varchar" MaxLength="30" />
+    <Property Name="Pic02_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic02_UpdTime" Type="datetime" />
+    <Property Name="Pic03" Type="varchar" MaxLength="30" />
+    <Property Name="Pic03_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic03_UpdTime" Type="datetime" />
+    <Property Name="Pic04" Type="varchar" MaxLength="30" />
+    <Property Name="Pic04_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic04_UpdTime" Type="datetime" />
+    <Property Name="Pic05" Type="varchar" MaxLength="30" />
+    <Property Name="Pic05_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic05_UpdTime" Type="datetime" />
+    <Property Name="Pic06" Type="varchar" MaxLength="30" />
+    <Property Name="Pic06_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic06_UpdTime" Type="datetime" />
+    <Property Name="Pic07" Type="varchar" MaxLength="30" />
+    <Property Name="Pic07_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic07_UpdTime" Type="datetime" />
+    <Property Name="Pic08" Type="varchar" MaxLength="30" />
+    <Property Name="Pic08_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic08_UpdTime" Type="datetime" />
+    <Property Name="Txt01_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt02_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt03_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt04_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt05_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt06_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt07_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt08_zh_TW" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt01_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt02_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt03_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt04_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt05_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt06_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt07_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt08_zh_CN" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt01_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt02_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt03_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt04_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt05_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt06_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt07_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Txt08_en_US" Type="nvarchar" MaxLength="100" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProdPic_Group">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+      <PropertyRef Name="Model_No" />
+      <PropertyRef Name="Pic_Class" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Pic_Class" Type="int" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pic_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic_File" Type="varchar" MaxLength="30" />
+    <Property Name="Pic_Desc" Type="nvarchar(max)" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProdPic_Param">
+    <Key>
+      <PropertyRef Name="Param_ID" />
+      <PropertyRef Name="Pic_Class" />
+    </Key>
+    <Property Name="Param_ID" Type="int" Nullable="false" />
+    <Property Name="Pic_Class" Type="int" Nullable="false" />
+    <Property Name="Param_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Param_RelColumn" Type="nvarchar" MaxLength="50" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProdPic_Photo">
+    <Key>
+      <PropertyRef Name="Pic_ID" />
+    </Key>
+    <Property Name="Pic_ID" Type="int" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Pic01" Type="varchar" MaxLength="30" />
+    <Property Name="Pic01_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic01_UpdTime" Type="datetime" />
+    <Property Name="Pic02" Type="varchar" MaxLength="30" />
+    <Property Name="Pic02_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic02_UpdTime" Type="datetime" />
+    <Property Name="Pic03" Type="varchar" MaxLength="30" />
+    <Property Name="Pic03_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic03_UpdTime" Type="datetime" />
+    <Property Name="Pic04" Type="varchar" MaxLength="30" />
+    <Property Name="Pic04_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic04_UpdTime" Type="datetime" />
+    <Property Name="Pic05" Type="varchar" MaxLength="30" />
+    <Property Name="Pic05_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic05_UpdTime" Type="datetime" />
+    <Property Name="Pic06" Type="varchar" MaxLength="30" />
+    <Property Name="Pic06_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic06_UpdTime" Type="datetime" />
+    <Property Name="Pic07" Type="varchar" MaxLength="30" />
+    <Property Name="Pic07_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic07_UpdTime" Type="datetime" />
+    <Property Name="Pic08" Type="varchar" MaxLength="30" />
+    <Property Name="Pic08_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic08_UpdTime" Type="datetime" />
+    <Property Name="Pic09" Type="varchar" MaxLength="30" />
+    <Property Name="Pic09_OrgFile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Pic09_UpdTime" Type="datetime" />
+    <Property Name="PicSource" Type="nvarchar" MaxLength="100" />
+    <Property Name="Create_Who" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Create_Time" Type="datetime" Nullable="false" />
+    <Property Name="Update_Who" Type="varchar" MaxLength="10" />
+    <Property Name="Update_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProdPic_Rel">
+    <Key>
+      <PropertyRef Name="Pic_Class" />
+      <PropertyRef Name="Pic_Column" />
+      <PropertyRef Name="Model_No" />
+    </Key>
+    <Property Name="Rel_ID" Type="int" Nullable="false" />
+    <Property Name="Pic_Class" Type="int" Nullable="false" />
+    <Property Name="Pic_Column" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model_No" Type="nchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Program">
+    <Key>
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Prog_ID" Type="int" Nullable="false" />
+    <Property Name="Prog_Name_zh_TW" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prog_Name_en_US" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prog_Name_zh_CN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prog_Link" Type="varchar" MaxLength="100" />
+    <Property Name="Up_Id" Type="int" Nullable="false" />
+    <Property Name="Lv" Type="int" Nullable="false" />
+    <Property Name="Lv_Path" Type="varchar" MaxLength="70" />
+    <Property Name="Lv_Path_Name" Type="nvarchar(max)" />
+    <Property Name="Child_Cnt" Type="int" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="LeftMenu_Display" Type="char" MaxLength="1" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+    <Property Name="CssStyle" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User_Group_Rel_Program">
+    <Key>
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Guid" Type="varchar" MaxLength="38" Nullable="false" />
+    <Property Name="Prog_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Profile_Rel_Program">
+    <Key>
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="Prog_ID" />
+    </Key>
+    <Property Name="Guid" Type="varchar" MaxLength="38" Nullable="false" />
+    <Property Name="Prog_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Warehouse_Class">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Class_Name_zh_TW" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Class_Name_en_US" Type="nvarchar" MaxLength="40" />
+    <Property Name="Class_Name_zh_CN" Type="nvarchar" MaxLength="40" />
+    <Property Name="Display" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_PKWeb" Type="Self.Icon_Rel_PKWeb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_PKWeb">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Pics_PK_Icon">
+    <End Role="Icon" Type="Self.Icon" Multiplicity="1" />
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon">
+        <PropertyRef Name="Icon_ID" />
+      </Principal>
+      <Dependent Role="Icon_Pics">
+        <PropertyRef Name="Icon_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_BOMSpec_PK_Icon_Pics">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_BOMSpec" Type="Self.Icon_Rel_BOMSpec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_BOMSpec">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_BOMSpec_PK_Prod_BOMSpec">
+    <End Role="Prod_BOMSpec" Type="Self.Prod_BOMSpec" Multiplicity="1" />
+    <End Role="Icon_Rel_BOMSpec" Type="Self.Icon_Rel_BOMSpec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_BOMSpec">
+        <PropertyRef Name="BOM_SpecID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_BOMSpec">
+        <PropertyRef Name="BOM_SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_Certification_PK_Icon_Pics">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_Certification" Type="Self.Icon_Rel_Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_Certification">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_Spec_PK_Icon_Pics">
+    <End Role="Icon_Pics" Type="Self.Icon_Pics" Multiplicity="1" />
+    <End Role="Icon_Rel_Spec" Type="Self.Icon_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icon_Pics">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_Spec">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Icon_Rel_Spec_PK_Prod_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="1" />
+    <End Role="Icon_Rel_Spec" Type="Self.Icon_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec">
+        <PropertyRef Name="SpecID" />
+      </Principal>
+      <Dependent Role="Icon_Rel_Spec">
+        <PropertyRef Name="SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup">
+    <End Role="Prod_BOMSpec_OptionGroup" Type="Self.Prod_BOMSpec_OptionGroup" Multiplicity="1" />
+    <End Role="Prod_BOMSpec_Option" Type="Self.Prod_BOMSpec_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_BOMSpec_OptionGroup">
+        <PropertyRef Name="OptionGID" />
+      </Principal>
+      <Dependent Role="Prod_BOMSpec_Option">
+        <PropertyRef Name="OptionGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Certification_Detail_PK_Prod_Certification">
+    <End Role="Prod_Certification" Type="Self.Prod_Certification" Multiplicity="1" />
+    <End Role="Prod_Certification_Detail" Type="Self.Prod_Certification_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Certification">
+        <PropertyRef Name="Cert_ID" />
+      </Principal>
+      <Dependent Role="Prod_Certification_Detail">
+        <PropertyRef Name="Cert_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_File_SOP_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_File_SOP" Type="Self.Prod_File_SOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_File_SOP">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Item_Rel_Spec_pk_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_Item_Rel_Spec" Type="Self.Prod_Item_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_Item_Rel_Spec">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Item_Rel_Spec_pk_Prod_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="1" />
+    <End Role="Prod_Item_Rel_Spec" Type="Self.Prod_Item_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec">
+        <PropertyRef Name="SpecID" />
+      </Principal>
+      <Dependent Role="Prod_Item_Rel_Spec">
+        <PropertyRef Name="SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Attachment_PK_Prod_News">
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="1" />
+    <End Role="Prod_News_Attachment" Type="Self.Prod_News_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_News">
+        <PropertyRef Name="NewsID" />
+      </Principal>
+      <Dependent Role="Prod_News_Attachment">
+        <PropertyRef Name="NewsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Models_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_News_Models" Type="Self.Prod_News_Models" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_News_Models">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_PK_Prod_NewsClass">
+    <End Role="Prod_NewsClass" Type="Self.Prod_NewsClass" Multiplicity="1" />
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_NewsClass">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="Prod_News">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_SubModels_PK_Prod_Item">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_News_SubModels" Type="Self.Prod_News_SubModels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_News_SubModels">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_News_Target_PK_Prod_News">
+    <End Role="Prod_News" Type="Self.Prod_News" Multiplicity="1" />
+    <End Role="Prod_News_Target" Type="Self.Prod_News_Target" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_News">
+        <PropertyRef Name="NewsID" />
+      </Principal>
+      <Dependent Role="Prod_News_Target">
+        <PropertyRef Name="NewsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_Rel_PartNo" Type="Self.Prod_Rel_PartNo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_Rel_PartNo">
+        <PropertyRef Name="Model_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No">
+    <End Role="Prod_Item" Type="Self.Prod_Item" Multiplicity="1" />
+    <End Role="Prod_Rel_PartNo" Type="Self.Prod_Rel_PartNo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Item">
+        <PropertyRef Name="Model_No" />
+      </Principal>
+      <Dependent Role="Prod_Rel_PartNo">
+        <PropertyRef Name="Part_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup">
+    <End Role="Prod_Spec_OptionGroup" Type="Self.Prod_Spec_OptionGroup" Multiplicity="1" />
+    <End Role="Prod_Spec_Option" Type="Self.Prod_Spec_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_OptionGroup">
+        <PropertyRef Name="OptionGID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Option">
+        <PropertyRef Name="OptionGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec">
+        <PropertyRef Name="SpecID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category">
+    <End Role="Prod_Spec_Category" Type="Self.Prod_Spec_Category" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_Category">
+        <PropertyRef Name="CateID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="CateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class">
+    <End Role="Prod_Spec_Class" Type="Self.Prod_Spec_Class" Multiplicity="1" />
+    <End Role="Prod_Spec_Rel_Category" Type="Self.Prod_Spec_Rel_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_Class">
+        <PropertyRef Name="SpecClassID" />
+      </Principal>
+      <Dependent Role="Prod_Spec_Rel_Category">
+        <PropertyRef Name="SpecClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_SpecClass_Rel_pk_Spec_Prod_Spec">
+    <End Role="Prod_Spec" Type="Self.Prod_Spec" Multiplicity="1" />
+    <End Role="Prod_SpecClass_Rel_Spec" Type="Self.Prod_SpecClass_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec">
+        <PropertyRef Name="SpecID" />
+      </Principal>
+      <Dependent Role="Prod_SpecClass_Rel_Spec">
+        <PropertyRef Name="SpecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_SpecClass_Rel_Spec_pk_Prod_Spec_Class">
+    <End Role="Prod_Spec_Class" Type="Self.Prod_Spec_Class" Multiplicity="1" />
+    <End Role="Prod_SpecClass_Rel_Spec" Type="Self.Prod_SpecClass_Rel_Spec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prod_Spec_Class">
+        <PropertyRef Name="SpecClassID" />
+      </Principal>
+      <Dependent Role="Prod_SpecClass_Rel_Spec">
+        <PropertyRef Name="SpecClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Group_Rel_Program_PK_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="User_Group_Rel_Program" Type="Self.User_Group_Rel_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Prog_ID" />
+      </Principal>
+      <Dependent Role="User_Group_Rel_Program">
+        <PropertyRef Name="Prog_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Profile_Rel_Program_PK_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="User_Profile_Rel_Program" Type="Self.User_Profile_Rel_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Prog_ID" />
+      </Principal>
+      <Dependent Role="User_Profile_Rel_Program">
+        <PropertyRef Name="Prog_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductCenterModelStoreContainer">
+    <EntitySet Name="Icon" EntityType="Self.Icon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Pics" EntityType="Self.Icon_Pics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_BOMSpec" EntityType="Self.Icon_Rel_BOMSpec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_Certification" EntityType="Self.Icon_Rel_Certification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_Certification_eService" EntityType="Self.Icon_Rel_Certification_eService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_PKWeb" EntityType="Self.Icon_Rel_PKWeb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_Spec" EntityType="Self.Icon_Rel_Spec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icon_Rel_Spec_eService" EntityType="Self.Icon_Rel_Spec_eService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_AD" EntityType="Self.Log_AD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_Record" EntityType="Self.Log_Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_SendMail" EntityType="Self.Log_SendMail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_User_Group_Rel_Program" EntityType="Self.Log_User_Group_Rel_Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_User_Profile_Rel_Program" EntityType="Self.Log_User_Profile_Rel_Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Param_Corp" EntityType="Self.Param_Corp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Param_Dictionary" EntityType="Self.Param_Dictionary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Param_ExchangeRate" EntityType="Self.Param_ExchangeRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Param_Public" EntityType="Self.Param_Public" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_BOMSpec" EntityType="Self.Prod_BOMSpec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_BOMSpec_List" EntityType="Self.Prod_BOMSpec_List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_BOMSpec_Option" EntityType="Self.Prod_BOMSpec_Option" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_BOMSpec_OptionGroup" EntityType="Self.Prod_BOMSpec_OptionGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Certification" EntityType="Self.Prod_Certification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Certification_Detail" EntityType="Self.Prod_Certification_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Class" EntityType="Self.Prod_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_File_SOP" EntityType="Self.Prod_File_SOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Info" EntityType="Self.Prod_Info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Item" EntityType="Self.Prod_Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Item_Rel_Spec" EntityType="Self.Prod_Item_Rel_Spec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_MallPic" EntityType="Self.Prod_MallPic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_News" EntityType="Self.Prod_News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_News_Attachment" EntityType="Self.Prod_News_Attachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_News_Models" EntityType="Self.Prod_News_Models" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_News_SubModels" EntityType="Self.Prod_News_SubModels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_News_Target" EntityType="Self.Prod_News_Target" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_NewsClass" EntityType="Self.Prod_NewsClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_PDF_byClass" EntityType="Self.Prod_PDF_byClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_PDF_byItem" EntityType="Self.Prod_PDF_byItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Rel_PartNo" EntityType="Self.Prod_Rel_PartNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec" EntityType="Self.Prod_Spec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_Category" EntityType="Self.Prod_Spec_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_Class" EntityType="Self.Prod_Spec_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_List" EntityType="Self.Prod_Spec_List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_Option" EntityType="Self.Prod_Spec_Option" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_OptionGroup" EntityType="Self.Prod_Spec_OptionGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Spec_Rel_Category" EntityType="Self.Prod_Spec_Rel_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_SpecClass_Rel_Spec" EntityType="Self.Prod_SpecClass_Rel_Spec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdPic_Figure" EntityType="Self.ProdPic_Figure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdPic_Group" EntityType="Self.ProdPic_Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdPic_Param" EntityType="Self.ProdPic_Param" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdPic_Photo" EntityType="Self.ProdPic_Photo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdPic_Rel" EntityType="Self.ProdPic_Rel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Group_Rel_Program" EntityType="Self.User_Group_Rel_Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Profile_Rel_Program" EntityType="Self.User_Profile_Rel_Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse_Class" EntityType="Self.Warehouse_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERP_QMSME" EntityType="Self.ERP_QMSME" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ERP_QMSME].[DBS] AS [DBS], 
+    [ERP_QMSME].[ME001] AS [ME001], 
+    [ERP_QMSME].[ME002] AS [ME002], 
+    [ERP_QMSME].[ME003] AS [ME003], 
+    [ERP_QMSME].[ME004] AS [ME004], 
+    [ERP_QMSME].[ME005] AS [ME005], 
+    [ERP_QMSME].[ME006] AS [ME006]
+    FROM [dbo].[ERP_QMSME] AS [ERP_QMSME]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ERP_QMSMG" EntityType="Self.ERP_QMSMG" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ERP_QMSMG].[DBS] AS [DBS], 
+    [ERP_QMSMG].[MG001] AS [MG001], 
+    [ERP_QMSMG].[MG002] AS [MG002], 
+    [ERP_QMSMG].[MG003] AS [MG003], 
+    [ERP_QMSMG].[MG004] AS [MG004], 
+    [ERP_QMSMG].[MG005] AS [MG005], 
+    [ERP_QMSMG].[MG006] AS [MG006], 
+    [ERP_QMSMG].[MG007] AS [MG007]
+    FROM [dbo].[ERP_QMSMG] AS [ERP_QMSMG]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Prod_ItemSZ" EntityType="Self.Prod_ItemSZ" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Prod_ItemSZ].[Model_No] AS [Model_No], 
+    [Prod_ItemSZ].[Item_No] AS [Item_No], 
+    [Prod_ItemSZ].[Class_ID] AS [Class_ID], 
+    [Prod_ItemSZ].[Warehouse_Class_ID] AS [Warehouse_Class_ID], 
+    [Prod_ItemSZ].[Model_Name_zh_TW] AS [Model_Name_zh_TW], 
+    [Prod_ItemSZ].[Model_Name_zh_CN] AS [Model_Name_zh_CN], 
+    [Prod_ItemSZ].[Model_Name_en_US] AS [Model_Name_en_US], 
+    [Prod_ItemSZ].[Model_Desc] AS [Model_Desc], 
+    [Prod_ItemSZ].[BarCode] AS [BarCode], 
+    [Prod_ItemSZ].[Catelog_Vol] AS [Catelog_Vol], 
+    [Prod_ItemSZ].[Page] AS [Page], 
+    [Prod_ItemSZ].[Provider] AS [Provider], 
+    [Prod_ItemSZ].[Ship_From] AS [Ship_From], 
+    [Prod_ItemSZ].[Date_Of_Listing] AS [Date_Of_Listing], 
+    [Prod_ItemSZ].[Stop_Offer_Date] AS [Stop_Offer_Date], 
+    [Prod_ItemSZ].[Substitute_Model_No_SZ] AS [Substitute_Model_No_SZ], 
+    [Prod_ItemSZ].[Cases_Of_Failure_Date_SZ] AS [Cases_Of_Failure_Date_SZ], 
+    [Prod_ItemSZ].[Pub_Individual_Packing_zh_TW] AS [Pub_Individual_Packing_zh_TW], 
+    [Prod_ItemSZ].[Pub_Individual_Packing_en_US] AS [Pub_Individual_Packing_en_US], 
+    [Prod_ItemSZ].[Pub_Individual_Packing_zh_CN] AS [Pub_Individual_Packing_zh_CN], 
+    [Prod_ItemSZ].[Pub_IP_Weight] AS [Pub_IP_Weight], 
+    [Prod_ItemSZ].[Pub_IB_Qty] AS [Pub_IB_Qty], 
+    [Prod_ItemSZ].[Pub_Carton_Qty_CTN] AS [Pub_Carton_Qty_CTN], 
+    [Prod_ItemSZ].[Pub_Carton_Qty] AS [Pub_Carton_Qty], 
+    [Prod_ItemSZ].[Pub_Carton_NW] AS [Pub_Carton_NW], 
+    [Prod_ItemSZ].[Pub_Carton_GW] AS [Pub_Carton_GW], 
+    [Prod_ItemSZ].[Pub_Carton_L] AS [Pub_Carton_L], 
+    [Prod_ItemSZ].[Pub_Carton_W] AS [Pub_Carton_W], 
+    [Prod_ItemSZ].[Pub_Carton_H] AS [Pub_Carton_H], 
+    [Prod_ItemSZ].[Pub_Carton_CUFT] AS [Pub_Carton_CUFT], 
+    [Prod_ItemSZ].[Pub_QC_Category] AS [Pub_QC_Category], 
+    [Prod_ItemSZ].[Pub_Notes] AS [Pub_Notes], 
+    [Prod_ItemSZ].[Pub_Card_Model_No] AS [Pub_Card_Model_No], 
+    [Prod_ItemSZ].[Pub_Alternate2] AS [Pub_Alternate2], 
+    [Prod_ItemSZ].[Pub_Message] AS [Pub_Message], 
+    [Prod_ItemSZ].[MOQ] AS [MOQ]
+    FROM [dbo].[Prod_ItemSZ] AS [Prod_ItemSZ]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec" Association="Self.FK_Icon_Ignore_Spec_PK_Icon_Ignore_Spec">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_PKWeb" EntitySet="Icon_Rel_PKWeb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Pics_PK_Icon" Association="Self.FK_Icon_Pics_PK_Icon">
+      <End Role="Icon" EntitySet="Icon" />
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_BOMSpec_PK_Icon_Pics" Association="Self.FK_Icon_Rel_BOMSpec_PK_Icon_Pics">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_BOMSpec" EntitySet="Icon_Rel_BOMSpec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_BOMSpec_PK_Prod_BOMSpec" Association="Self.FK_Icon_Rel_BOMSpec_PK_Prod_BOMSpec">
+      <End Role="Prod_BOMSpec" EntitySet="Prod_BOMSpec" />
+      <End Role="Icon_Rel_BOMSpec" EntitySet="Icon_Rel_BOMSpec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_Certification_PK_Icon_Pics" Association="Self.FK_Icon_Rel_Certification_PK_Icon_Pics">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_Certification" EntitySet="Icon_Rel_Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_Spec_PK_Icon_Pics" Association="Self.FK_Icon_Rel_Spec_PK_Icon_Pics">
+      <End Role="Icon_Pics" EntitySet="Icon_Pics" />
+      <End Role="Icon_Rel_Spec" EntitySet="Icon_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Icon_Rel_Spec_PK_Prod_Spec" Association="Self.FK_Icon_Rel_Spec_PK_Prod_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Icon_Rel_Spec" EntitySet="Icon_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup" Association="Self.FK_Prod_BOMSpec_Option_pk_Prod_BOMSpec_OptionGroup">
+      <End Role="Prod_BOMSpec_OptionGroup" EntitySet="Prod_BOMSpec_OptionGroup" />
+      <End Role="Prod_BOMSpec_Option" EntitySet="Prod_BOMSpec_Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Certification_Detail_PK_Prod_Certification" Association="Self.FK_Prod_Certification_Detail_PK_Prod_Certification">
+      <End Role="Prod_Certification" EntitySet="Prod_Certification" />
+      <End Role="Prod_Certification_Detail" EntitySet="Prod_Certification_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_File_SOP_PK_Prod_Item" Association="Self.FK_Prod_File_SOP_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_File_SOP" EntitySet="Prod_File_SOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Item_Rel_Spec_pk_Prod_Item" Association="Self.FK_Prod_Item_Rel_Spec_pk_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Item_Rel_Spec" EntitySet="Prod_Item_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Item_Rel_Spec_pk_Prod_Spec" Association="Self.FK_Prod_Item_Rel_Spec_pk_Prod_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Prod_Item_Rel_Spec" EntitySet="Prod_Item_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Attachment_PK_Prod_News" Association="Self.FK_Prod_News_Attachment_PK_Prod_News">
+      <End Role="Prod_News" EntitySet="Prod_News" />
+      <End Role="Prod_News_Attachment" EntitySet="Prod_News_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Models_PK_Prod_Item" Association="Self.FK_Prod_News_Models_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_News_Models" EntitySet="Prod_News_Models" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_PK_Prod_NewsClass" Association="Self.FK_Prod_News_PK_Prod_NewsClass">
+      <End Role="Prod_NewsClass" EntitySet="Prod_NewsClass" />
+      <End Role="Prod_News" EntitySet="Prod_News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_SubModels_PK_Prod_Item" Association="Self.FK_Prod_News_SubModels_PK_Prod_Item">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_News_SubModels" EntitySet="Prod_News_SubModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_News_Target_PK_Prod_News" Association="Self.FK_Prod_News_Target_PK_Prod_News">
+      <End Role="Prod_News" EntitySet="Prod_News" />
+      <End Role="Prod_News_Target" EntitySet="Prod_News_Target" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No" Association="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Model_No">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Rel_PartNo" EntitySet="Prod_Rel_PartNo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No" Association="Self.FK_Prod_Rel_PartNo_pk_Prod_Item_in_Part_No">
+      <End Role="Prod_Item" EntitySet="Prod_Item" />
+      <End Role="Prod_Rel_PartNo" EntitySet="Prod_Rel_PartNo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup" Association="Self.FK_Prod_Spec_Option_pk_Prod_Spec_OptionGroup">
+      <End Role="Prod_Spec_OptionGroup" EntitySet="Prod_Spec_OptionGroup" />
+      <End Role="Prod_Spec_Option" EntitySet="Prod_Spec_Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Category">
+      <End Role="Prod_Spec_Category" EntitySet="Prod_Spec_Category" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class" Association="Self.FK_Prod_Spec_Rel_Category_pk_Prod_Spec_Class">
+      <End Role="Prod_Spec_Class" EntitySet="Prod_Spec_Class" />
+      <End Role="Prod_Spec_Rel_Category" EntitySet="Prod_Spec_Rel_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_SpecClass_Rel_pk_Spec_Prod_Spec" Association="Self.FK_Prod_SpecClass_Rel_pk_Spec_Prod_Spec">
+      <End Role="Prod_Spec" EntitySet="Prod_Spec" />
+      <End Role="Prod_SpecClass_Rel_Spec" EntitySet="Prod_SpecClass_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_SpecClass_Rel_Spec_pk_Prod_Spec_Class" Association="Self.FK_Prod_SpecClass_Rel_Spec_pk_Prod_Spec_Class">
+      <End Role="Prod_Spec_Class" EntitySet="Prod_Spec_Class" />
+      <End Role="Prod_SpecClass_Rel_Spec" EntitySet="Prod_SpecClass_Rel_Spec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Group_Rel_Program_PK_Program" Association="Self.FK_User_Group_Rel_Program_PK_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="User_Group_Rel_Program" EntitySet="User_Group_Rel_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Profile_Rel_Program_PK_Program" Association="Self.FK_User_Profile_Rel_Program_PK_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="User_Profile_Rel_Program" EntitySet="User_Profile_Rel_Program" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
