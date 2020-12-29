@@ -279,7 +279,7 @@ namespace PKLib_Data.Controllers
                             {
                                 //關鍵字品名,品號
                                 sql.Append(" AND (");
-                                sql.Append("    (UPPER(Base.Model_No) LIKE '%' + UPPER(@Keyword) + '%')");
+                                sql.Append("    (UPPER(Base.Model_No) LIKE UPPER(@Keyword) + '%')");
                                 sql.Append("    OR (UPPER(Base.Model_Name_zh_TW) LIKE '%' + UPPER(@Keyword) + '%')");
                                 sql.Append("    OR (UPPER(Base.Model_Name_zh_CN) LIKE '%' + UPPER(@Keyword) + '%')");
                                 sql.Append("    OR (UPPER(Base.Model_Name_en_US) LIKE '%' + UPPER(@Keyword) + '%')");

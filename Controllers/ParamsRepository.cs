@@ -16,9 +16,7 @@ using PKLib_Method.Methods;
  */
 namespace PKLib_Data.Controllers
 {
-    /// <summary>
-    /// 參數查詢
-    /// </summary>
+
     public class ParamsRepository : dbConn
     {
         #region -----// Read //-----
@@ -207,9 +205,114 @@ namespace PKLib_Data.Controllers
             }
         }
 
-
         #endregion
 
 
+        #region -----// Create //-----
+
+        /// <summary>
+        /// 建立網站選單點擊資料
+        /// </summary>
+        /// <param name="Menu_Zone">選單所屬區域1:ProductCenter, 2:PKHome, 3:PKEF, 4:PKReport</param>
+        /// <param name="Menu_ID">選單編號</param>
+        /// <param name="User_Guid">使用者guid</param>
+        /// <returns></returns>
+        public bool Create_ClickInfo(Int16 Menu_Zone, Int32 Menu_ID, string User_Guid, out string ErrMsg)
+        {
+            //----- 宣告 -----
+            string sql = "";
+            bool doTableCheck = false;
+            dbConn db = new dbConn();
+
+            #region -- 每年1/1檢查Table --
+            DateTime _today = DateTime.Today;
+            int _thisYear = _today.Year;
+            if (_today.ToShortDateString().Equals(_thisYear + "/1/1"))
+            {
+                doTableCheck = true;
+            }
+            #endregion
+
+            //----- 資料查詢 -----
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                //----- SQL 查詢語法 -----
+                #region -- Table Check --
+
+                if (doTableCheck)
+                {
+                    sql = @"
+                        IF (EXISTS (SELECT * 
+                                    FROM INFORMATION_SCHEMA.TABLES 
+                                    WHERE TABLE_NAME = 'MenuClick_#Year#'))
+	                        BEGIN
+		                        --Do Nothing
+		                        SELECT 1
+	                        END
+                        ELSE
+
+                        BEGIN
+
+                        /* Create Table Start */
+                        CREATE TABLE [dbo].[MenuClick_#Year#](
+	                        [SeqNo] [bigint] IDENTITY(1,1) NOT NULL,
+	                        [Menu_Zone] [smallint] NOT NULL,
+	                        [Menu_ID] [int] NOT NULL,
+	                        [User_Guid] [varchar](38) NOT NULL,
+	                        [ClickTime] [datetime] NULL,
+                         CONSTRAINT [PK_MenuClick_#Year#] PRIMARY KEY CLUSTERED 
+                        (
+	                        [SeqNo] ASC
+                        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+                        --)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+                        ) ON [PRIMARY]
+
+
+                        ALTER TABLE [dbo].[MenuClick_#Year#] ADD  CONSTRAINT [DF_MenuClick_#Year#_ClickTime]  DEFAULT (getdate()) FOR [ClickTime]
+
+
+                        EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1:ProductCenter, 2:PKHome, 3:PKEF, 4:PKReport' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'MenuClick_#Year#', @level2type=N'COLUMN',@level2name=N'Menu_Zone'
+
+
+                        EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'選單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'MenuClick_#Year#', @level2type=N'COLUMN',@level2name=N'Menu_ID'
+
+
+                        EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AD帳戶的GUID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'MenuClick_#Year#', @level2type=N'COLUMN',@level2name=N'User_Guid'
+
+
+                        EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'點擊時間' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'MenuClick_#Year#', @level2type=N'COLUMN',@level2name=N'ClickTime'
+
+                        /* Create Table End */
+
+                        END";
+                }
+
+                #endregion
+
+                //Insert statment
+                sql += @"
+                    INSERT INTO MenuClick_#Year# (
+                     Menu_Zone, Menu_ID, User_Guid
+                    ) VALUES (
+                     @Menu_Zone, @Menu_ID, @User_Guid
+                    )";
+                
+                //SQL replace
+                sql = sql.Replace("#Year#", _thisYear.ToString());
+
+
+                //----- SQL 執行 -----
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("Menu_Zone", Menu_Zone);
+                cmd.Parameters.AddWithValue("Menu_ID", Menu_ID);
+                cmd.Parameters.AddWithValue("User_Guid", User_Guid);
+
+                //----- 資料取得 -----
+                return db.ExecuteSql(cmd, DBTarget.ClickLog, out ErrMsg);
+            }
+
+        }
+
+        #endregion
     }
 }

@@ -16,11 +16,13 @@ namespace PKLib_Data.Assets
         {
             myLocal = 1,
             PKSYS = 2,
-            Product = 3
+            Product = 3,
+            ClickLog = 4
         }
 
         /// <summary>
         /// 連線字串
+        /// 有使用此功能的網站, 也要在webConfig加上對應的連線字串, 才能正常執行
         /// </summary>
         /// <param name="target">資料庫別</param>
         /// <returns></returns>
@@ -34,6 +36,9 @@ namespace PKLib_Data.Assets
                 case 3:
                     return System.Web.Configuration.WebConfigurationManager.AppSettings["dbCon_Product"];
 
+                case 4:
+                    return System.Web.Configuration.WebConfigurationManager.AppSettings["dbCon_ClickLog"];
+                    
                 default:
                     return System.Web.Configuration.WebConfigurationManager.AppSettings["dbCon"];
             }
