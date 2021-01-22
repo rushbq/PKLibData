@@ -34,6 +34,7 @@ namespace PKLib_Data.Models
         public string NickName { get; set; }
 
         public string Email { get; set; }
+        public string Tel_Ext { get; set; }
 
         public Int64 GP_Rank { get; set; }
     }

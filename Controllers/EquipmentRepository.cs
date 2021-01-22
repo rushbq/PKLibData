@@ -61,6 +61,7 @@ namespace PKLib_Data.Controllers
                         ID = item.Field<string>("ID"),
                         Name = item.Field<string>("Name"),
                         Spec = item.Field<string>("Spec"),
+                        SupName = item.Field<string>("SupName"),
                         GetItemDate = item.Field<string>("GetItemDate").ToDateString_ERP("-"),
                         GetItemMoney = item.Field<Decimal>("GetItemMoney")
                     };
@@ -118,6 +119,7 @@ namespace PKLib_Data.Controllers
                         ID = item.Field<string>("ID"),
                         Name = item.Field<string>("Name"),
                         Spec = item.Field<string>("Spec"),
+                        SupName = item.Field<string>("SupName"),
                         GetItemDate = item.Field<string>("GetItemDate").ToDateString_ERP("-"),
                         GetItemMoney = item.Field<Decimal>("GetItemMoney")
                     };
@@ -158,16 +160,14 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine(", RTRIM(Base.MB001) AS ID");
                 sql.AppendLine(", RTRIM(Base.MB002) AS Name");
                 sql.AppendLine(", RTRIM(Base.MB003) AS Spec");
+                sql.AppendLine(", ISNULL(Base.MB008, '未知') AS SupName");
                 sql.AppendLine(", Base.MB016 AS GetItemDate");
                 sql.AppendLine(", Base.MB019 AS GetItemMoney");
                 sql.AppendLine(" FROM [prokit2].dbo.ASTMB Base WITH(NOLOCK)");
                 sql.AppendLine("  INNER JOIN [prokit2].dbo.ASTMC DT WITH(NOLOCK) ON Base.MB001 = DT.MC001");
                 sql.AppendLine("  LEFT JOIN User_Profile Prof WITH(NOLOCK) ON DT.MC003 = Prof.ERP_UserID COLLATE Chinese_Taiwan_Stroke_BIN");
                 sql.AppendLine(" WHERE (Base.MB039 = 'Y') AND (MB017 = '')");
-                sql.AppendLine(" AND (");
-                sql.AppendLine("  (UPPER(LEFT(Base.MB001, 4)) IN ('0E-A','0E-M','0E-S','1C10'))");
-                sql.AppendLine("  OR (UPPER(LEFT(Base.MB001, 4)) = '0E-F' AND UPPER(Base.MB057) = 'MIS')");
-                sql.AppendLine(" )");
+
 
 
 
@@ -178,6 +178,17 @@ namespace PKLib_Data.Controllers
                     {
                         switch (item.Key)
                         {
+                            case (int)Common.mySearch.IsMIS:
+                                if (!string.IsNullOrEmpty(item.Value) && item.Value.Equals("Y"))
+                                {
+                                    sql.AppendLine(" AND (");
+                                    sql.AppendLine("  (UPPER(LEFT(Base.MB001, 4)) IN ('0E-A','0E-M','0E-S','1C10'))");
+                                    sql.AppendLine("  OR (UPPER(LEFT(Base.MB001, 4)) = '0E-F' AND UPPER(Base.MB057) = 'MIS')");
+                                    sql.AppendLine(" )");
+                                }
+
+                                break;
+
                             case (int)Common.mySearch.Keyword:
                                 if (!string.IsNullOrEmpty(item.Value))
                                 {
@@ -266,6 +277,7 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine(", RTRIM(Base.MB001) AS ID");
                 sql.AppendLine(", RTRIM(Base.MB002) AS Name");
                 sql.AppendLine(", RTRIM(Base.MB003) AS Spec");
+                sql.AppendLine(", ISNULL(Base.MB008, '未知') AS SupName");
                 sql.AppendLine(", Base.MB016 AS GetItemDate");
                 sql.AppendLine(", Base.MB019 AS GetItemMoney");
                 sql.AppendLine(" FROM [SHPK2].dbo.ASTMB Base WITH(NOLOCK)");

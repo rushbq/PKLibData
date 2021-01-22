@@ -72,6 +72,7 @@ namespace PKLib_Data.Controllers
                         DeptName = item.Field<string>("DeptName"),
                         Email = item.Field<string>("Email"),
                         NickName = item.Field<string>("NickName"),
+                        Tel_Ext = item.Field<string>("Tel_Ext"),
                         GP_Rank = item.Field<Int64>("GP_Rank")
                     };
 
@@ -247,7 +248,8 @@ namespace PKLib_Data.Controllers
             {
                 //----- SQL 查詢語法 -----
                 sql.AppendLine(" SELECT ");
-                sql.AppendLine("  Prof.Account_Name ProfID, Prof.Display_Name ProfName, Prof.Guid ProfGuid, Prof.Email, Prof.NickName");
+                sql.AppendLine("  Prof.Account_Name ProfID, Prof.Display_Name ProfName, Prof.Guid ProfGuid");
+                sql.AppendLine("  , Prof.Email, Prof.NickName, Prof.Tel_Ext");
                 sql.AppendLine("  , Dept.DeptID DeptID, Dept.DeptName DeptName");
                 sql.AppendLine("  , ROW_NUMBER() OVER(PARTITION BY Dept.DeptID ORDER BY Prof.Display DESC, Dept.Sort, Prof.Account_Name ASC) AS GP_Rank");
                 sql.AppendLine(" FROM User_Dept Dept WITH(NOLOCK) INNER JOIN User_Profile Prof WITH(NOLOCK) ON Dept.DeptID = Prof.DeptID");

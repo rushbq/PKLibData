@@ -17,6 +17,7 @@ namespace PKLib_Data.Models
         public string ID { get; set; }
         public string Name { get; set; }
         public string Spec { get; set; }
+        public string SupName { get; set; }
         public string GetItemDate { get; set; }
         public Decimal? GetItemMoney { get; set; }
     }

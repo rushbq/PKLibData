@@ -38,7 +38,8 @@ namespace PKLib_Data.Assets
             Corp = 3,
             DeptID = 4,
             StartDate = 5,
-            EndDate = 6
+            EndDate = 6,
+            IsMIS = 7
         }
 
         /// <summary>
@@ -58,7 +59,8 @@ namespace PKLib_Data.Assets
         public enum ProdSearch : int
         {
             DataID = 1,
-            Keyword = 2
+            Keyword = 2,
+            ItemKey = 3
         }
 
         /// <summary>

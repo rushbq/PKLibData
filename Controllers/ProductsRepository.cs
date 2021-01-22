@@ -211,6 +211,15 @@ namespace PKLib_Data.Controllers
                                 }
 
                                 break;
+
+
+                            case (int)Common.ProdSearch.ItemKey:
+                                if (!string.IsNullOrEmpty(item.Value))
+                                {
+                                    cmd.Parameters.AddWithValue("ItemKey", item.Value);
+                                }
+
+                                break;
                         }
                     }
                 }
@@ -283,6 +292,18 @@ namespace PKLib_Data.Controllers
                                 sql.Append("    OR (UPPER(Base.Model_Name_zh_TW) LIKE '%' + UPPER(@Keyword) + '%')");
                                 sql.Append("    OR (UPPER(Base.Model_Name_zh_CN) LIKE '%' + UPPER(@Keyword) + '%')");
                                 sql.Append("    OR (UPPER(Base.Model_Name_en_US) LIKE '%' + UPPER(@Keyword) + '%')");
+                                sql.Append(" )");
+                            }
+
+                            break;
+
+
+                        case (int)Common.ProdSearch.ItemKey:
+                            if (!string.IsNullOrEmpty(item.Value))
+                            {
+                                //關鍵字品名,品號
+                                sql.Append(" AND (");
+                                sql.Append("    (UPPER(Base.Model_No) LIKE UPPER(@ItemKey) + '%')");
                                 sql.Append(" )");
                             }
 
