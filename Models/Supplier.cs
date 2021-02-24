@@ -68,8 +68,100 @@ namespace PKLib_Data.Models
         public string ERP_SupID { get; set; }
         public string ERP_SupName { get; set; }
         public int InfoID { get; set; }
+
+        /// <summary>
+        /// 採購人員
+        /// </summary>
         public string User_Account { get; set; }
         public string User_Name { get; set; }
+
+        /// <summary>
+        /// 台灣:收款人帳號
+        /// </summary>
+        public string tw_Account { get; set; }
+        /// <summary>
+        /// 台灣:收款人名稱
+        /// </summary>
+        public string tw_AccName { get; set; }
+        /// <summary>
+        /// 台灣:銀行名稱
+        /// </summary>
+        public string tw_BankName { get; set; }
+        /// <summary>
+        /// 台灣:銀行代號
+        /// </summary>
+        public string tw_BankID { get; set; }
+
+        /// <summary>
+        /// 中國:收款人帳號
+        /// </summary>
+        public string cn_Account { get; set; }
+        /// <summary>
+        /// 中國:收款人名稱
+        /// </summary>
+        public string cn_AccName { get; set; }
+        /// <summary>
+        /// 中國:收款人Email
+        /// </summary>
+        public string cn_Email { get; set; }
+        /// <summary>
+        /// 中國:開戶行名稱
+        /// </summary>
+        public string cn_BankName { get; set; }
+        /// <summary>
+        /// 中國:CNAPS行號
+        /// </summary>
+        public string cn_BankID { get; set; }
+        /// <summary>
+        /// 中國:客戶業務編號
+        /// </summary>
+        public string cn_SaleID { get; set; }
+        /// <summary>
+        /// 中國:省份
+        /// </summary>
+        public string cn_State { get; set; }
+        /// <summary>
+        /// 中國:縣市
+        /// </summary>
+        public string cn_City { get; set; }
+
+        /// <summary>
+        /// 外匯:收款人帳號
+        /// </summary>
+        public string ww_Account { get; set; }
+        /// <summary>
+        /// 外匯:收款人名稱
+        /// </summary>
+        public string ww_AccName { get; set; }
+        /// <summary>
+        /// 外匯:收款人電話
+        /// </summary>
+        public string ww_Tel { get; set; }
+        /// <summary>
+        /// 外匯:收款人地址
+        /// </summary>
+        public string ww_Addr { get; set; }
+        /// <summary>
+        /// 外匯:銀行名稱
+        /// </summary>
+        public string ww_BankName { get; set; }
+        /// <summary>
+        /// 外匯:分行
+        /// </summary>
+        public string ww_BankBranch { get; set; }
+        /// <summary>
+        /// 外匯:銀行地址
+        /// </summary>
+        public string ww_BankAddr { get; set; }
+        /// <summary>
+        /// 外匯:國家
+        /// </summary>
+        public string ww_Country { get; set; }
+        /// <summary>
+        /// 外匯:代碼
+        /// </summary>
+        public string ww_Code { get; set; }
+
 
         public string Create_Who { get; set; }
         public string Create_Time { get; set; }

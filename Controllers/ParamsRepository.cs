@@ -224,10 +224,12 @@ namespace PKLib_Data.Controllers
             bool doTableCheck = false;
             dbConn db = new dbConn();
 
-            #region -- 每年1/1檢查Table --
+            #region -- 每年 15 天內檢查Table --
             DateTime _today = DateTime.Today;
             int _thisYear = _today.Year;
-            if (_today.ToShortDateString().Equals(_thisYear + "/1/1"))
+            DateTime _firstDay = new DateTime(_today.Year, 1, 1);
+            int _diff = new TimeSpan(_today.Ticks - _firstDay.Ticks).Days;
+            if (_diff < 15)
             {
                 doTableCheck = true;
             }

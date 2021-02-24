@@ -29,7 +29,7 @@ namespace PKLib_Data.Controllers
         Corp = 4
     }
 
-    
+
     public class SupplierRepository : dbConn
     {
         #region -----// Read //-----
@@ -267,28 +267,38 @@ namespace PKLib_Data.Controllers
         {
             //----- 宣告 -----
             List<ERP_Data> dataList = new List<ERP_Data>();
-            StringBuilder sql = new StringBuilder();
+            string sql = "";
             dbConn db = new dbConn();
 
             //----- 資料查詢 -----
             using (SqlCommand cmd = new SqlCommand())
             {
                 //----- SQL 查詢語法 -----
-                sql.AppendLine(" SELECT ");
-                sql.AppendLine("  Corp.Corp_UID, Corp.Corp_Name");
-                sql.AppendLine("  , RTRIM(ERP.MA001) ERP_SupID, RTRIM(ERP.MA002) ERP_SupName");
-                sql.AppendLine("  , ISNULL(Info.Data_ID, 0) AS InfoID, ISNULL(Prof.Account_Name, '') AS User_Account, ISNULL(Prof.Display_Name, '') AS User_Name");
-                sql.AppendLine(" FROM Param_Corp Corp WITH(NOLOCK)");
-                sql.AppendLine("  INNER JOIN Supplier_ERPData ERP WITH(NOLOCK) ON Corp.Corp_ID = RTRIM(ERP.COMPANY)");
-                sql.AppendLine("  LEFT JOIN Supplier_ExtendedInfo Info WITH(NOLOCK) ON RTRIM(ERP.MA001) = Info.ERP_ID AND Corp.Corp_UID = Info.Corp_UID");
-                sql.AppendLine("  LEFT JOIN User_Profile Prof WITH(NOLOCK) ON Info.Purchaser = Prof.Account_Name");
-                sql.AppendLine(" WHERE (Corp.Display = 'Y')");
-
+                sql += @"
+                    SELECT 
+                        Corp.Corp_UID, Corp.Corp_Name
+                        , RTRIM(ERP.MA001) ERP_SupID, RTRIM(ERP.MA002) ERP_SupName
+                        , ISNULL(Info.Data_ID, 0) AS InfoID, ISNULL(Prof.Account_Name, '') AS User_Account, ISNULL(Prof.Display_Name, '') AS User_Name
+                        , RTRIM(ERP.MA003) AS tw_AccName, ERP.MA028 AS tw_Account, ERP.MA027 AS tw_BankID, Bank.MO006 AS tw_BankName
+                        , Info.cn_Account, Info.cn_AccName, Info.cn_Email, Info.cn_BankName
+                        , Info.cn_BankID, Info.cn_SaleID, Info.cn_State, Info.cn_City
+                        , Info.ww_Account, Info.ww_AccName, Info.ww_Tel, Info.ww_Addr
+                        , Info.ww_BankName, Info.ww_BankBranch, Info.ww_BankAddr, Info.ww_Country, Info.ww_Code
+                    FROM Param_Corp Corp WITH(NOLOCK)
+                    INNER JOIN Supplier_ERPData ERP WITH(NOLOCK) ON Corp.Corp_ID = RTRIM(ERP.COMPANY)
+                    LEFT JOIN Supplier_ExtendedInfo Info WITH(NOLOCK) ON RTRIM(ERP.MA001) = Info.ERP_ID AND Corp.Corp_UID = Info.Corp_UID
+                    LEFT JOIN User_Profile Prof WITH(NOLOCK) ON Info.Purchaser = Prof.Account_Name
+                    LEFT JOIN [DSCSYS].dbo.CMSMO Bank WITH(NOLOCK) ON ERP.MA027 COLLATE Chinese_Taiwan_Stroke_BIN = Bank.MO001
+                    WHERE (Corp.Display = 'Y')";
 
                 /* Search */
+                #region >> filter <<
                 if (search != null)
                 {
-                    foreach (var item in search)
+                    //過濾空值
+                    var thisSearch = search.Where(fld => !string.IsNullOrWhiteSpace(fld.Value));
+
+                    foreach (var item in thisSearch)
                     {
                         switch (item.Key)
                         {
@@ -296,7 +306,7 @@ namespace PKLib_Data.Controllers
                                 //編號
                                 if (!string.IsNullOrEmpty(item.Value))
                                 {
-                                    sql.Append(" AND (ERP.MA001 = @DataID)");
+                                    sql += " AND (ERP.MA001 = @DataID)";
 
                                     cmd.Parameters.AddWithValue("DataID", item.Value);
                                 }
@@ -307,10 +317,11 @@ namespace PKLib_Data.Controllers
                                 //關鍵字
                                 if (!string.IsNullOrEmpty(item.Value))
                                 {
-                                    sql.Append(" AND (");
-                                    sql.Append("    (UPPER(RTRIM(ERP.MA001)) LIKE '%' + UPPER(@Keyword) + '%')");
-                                    sql.Append("    OR (UPPER(RTRIM(ERP.MA002)) LIKE '%' + UPPER(@Keyword) + '%')");
-                                    sql.Append(" )");
+                                    sql += @"
+                                        AND (
+                                           (UPPER(RTRIM(ERP.MA001)) LIKE '%' + UPPER(@Keyword) + '%')
+                                           OR (UPPER(RTRIM(ERP.MA002)) LIKE '%' + UPPER(@Keyword) + '%')
+                                        )";
 
                                     cmd.Parameters.AddWithValue("Keyword", item.Value);
                                 }
@@ -322,7 +333,7 @@ namespace PKLib_Data.Controllers
                                 //公司別
                                 if (!string.IsNullOrEmpty(item.Value))
                                 {
-                                    sql.Append(" AND (Corp.Corp_UID = @Corp_UID)");
+                                    sql += " AND (Corp.Corp_UID = @Corp_UID)";
 
                                     cmd.Parameters.AddWithValue("Corp_UID", item.Value);
                                 }
@@ -332,11 +343,13 @@ namespace PKLib_Data.Controllers
                         }
                     }
                 }
+                #endregion
 
-                sql.Append(" ORDER BY RTRIM(ERP.MA001)");
+
+                sql += " ORDER BY RTRIM(ERP.MA001)";
 
                 //----- SQL 執行 -----
-                cmd.CommandText = sql.ToString();
+                cmd.CommandText = sql;
 
 
                 //----- 資料取得 -----
@@ -357,7 +370,29 @@ namespace PKLib_Data.Controllers
                             ERP_SupName = item.Field<string>("ERP_SupName"),
                             InfoID = item.Field<int>("InfoID"),
                             User_Account = item.Field<string>("User_Account"),
-                            User_Name = item.Field<string>("User_Name")
+                            User_Name = item.Field<string>("User_Name"),
+                            tw_Account = item.Field<string>("tw_Account"),
+                            tw_AccName = item.Field<string>("tw_AccName"),
+                            tw_BankID = item.Field<string>("tw_BankID"),
+                            tw_BankName = item.Field<string>("tw_BankName"),
+                            cn_Account = item.Field<string>("cn_Account"),
+                            cn_AccName = item.Field<string>("cn_AccName"),
+                            cn_Email = item.Field<string>("cn_Email"),
+                            cn_BankName = item.Field<string>("cn_BankName"),
+                            cn_BankID = item.Field<string>("cn_BankID"),
+                            cn_SaleID = item.Field<string>("cn_SaleID"),
+                            cn_State = item.Field<string>("cn_State"),
+                            cn_City = item.Field<string>("cn_City"),
+                            ww_Account = item.Field<string>("ww_Account"),
+                            ww_AccName = item.Field<string>("ww_AccName"),
+                            ww_Tel = item.Field<string>("ww_Tel"),
+                            ww_Addr = item.Field<string>("ww_Addr"),
+                            ww_BankName = item.Field<string>("ww_BankName"),
+                            ww_BankBranch = item.Field<string>("ww_BankBranch"),
+                            ww_BankAddr = item.Field<string>("ww_BankAddr"),
+                            ww_Country = item.Field<string>("ww_Country"),
+                            ww_Code = item.Field<string>("ww_Code")
+                           
                         };
 
                         //將項目加入至集合
@@ -645,9 +680,21 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine(" SET @NewID = (SELECT ISNULL(MAX(Data_ID), 0) + 1 FROM Supplier_ExtendedInfo) ");
                 sql.AppendLine(" INSERT INTO Supplier_ExtendedInfo( ");
                 sql.AppendLine("  Data_ID, Corp_UID, ERP_ID, Purchaser");
+                //中國
+                sql.AppendLine("  , cn_Account, cn_AccName, cn_Email");
+                sql.AppendLine("  , cn_BankName, cn_BankID, cn_SaleID, cn_State, cn_City");
+                //外匯
+                sql.AppendLine("  , ww_Account, ww_AccName, ww_Tel, ww_Addr");
+                sql.AppendLine("  , ww_BankName, ww_BankBranch, ww_BankAddr, ww_Country, ww_Code");
                 sql.AppendLine("  , Create_Who, Create_Time");
                 sql.AppendLine(" ) VALUES (");
                 sql.AppendLine("  @NewID, @Corp_UID, @ERP_ID, @Purchaser");
+                //中國
+                sql.AppendLine("  , @cn_Account, @cn_AccName, @cn_Email");
+                sql.AppendLine("  , @cn_BankName, @cn_BankID, @cn_SaleID, @cn_State, @cn_City");
+                //外匯
+                sql.AppendLine("  , @ww_Account, @ww_AccName, @ww_Tel, @ww_Addr");
+                sql.AppendLine("  , @ww_BankName, @ww_BankBranch, @ww_BankAddr, @ww_Country, @ww_Code");
                 sql.AppendLine("  , @Create_Who, GETDATE()");
                 sql.AppendLine(" );");
                 sql.AppendLine(" SELECT @NewID AS DataID");
@@ -658,6 +705,24 @@ namespace PKLib_Data.Controllers
                 cmd.Parameters.AddWithValue("ERP_ID", instance.ERP_SupID);
                 cmd.Parameters.AddWithValue("Purchaser", instance.User_Account);
                 cmd.Parameters.AddWithValue("Create_Who", instance.Create_Who);
+
+                cmd.Parameters.AddWithValue("cn_Account", instance.cn_Account);
+                cmd.Parameters.AddWithValue("cn_AccName", instance.cn_AccName);
+                cmd.Parameters.AddWithValue("cn_Email", instance.cn_Email);
+                cmd.Parameters.AddWithValue("cn_BankName", instance.cn_BankName);
+                cmd.Parameters.AddWithValue("cn_BankID", instance.cn_BankID);
+                cmd.Parameters.AddWithValue("cn_SaleID", instance.cn_SaleID);
+                cmd.Parameters.AddWithValue("cn_State", instance.cn_State);
+                cmd.Parameters.AddWithValue("cn_City", instance.cn_City);
+                cmd.Parameters.AddWithValue("ww_Account", instance.ww_Account);
+                cmd.Parameters.AddWithValue("ww_AccName", instance.ww_AccName);
+                cmd.Parameters.AddWithValue("ww_Tel", instance.ww_Tel);
+                cmd.Parameters.AddWithValue("ww_Addr", instance.ww_Addr);
+                cmd.Parameters.AddWithValue("ww_BankName", instance.ww_BankName);
+                cmd.Parameters.AddWithValue("ww_BankBranch", instance.ww_BankBranch);
+                cmd.Parameters.AddWithValue("ww_BankAddr", instance.ww_BankAddr);
+                cmd.Parameters.AddWithValue("ww_Country", instance.ww_Country);
+                cmd.Parameters.AddWithValue("ww_Code", instance.ww_Code);
 
                 //----- 資料取得 -----
                 return db.ExecuteSql(cmd, DBTarget.PKSYS, out ErrMsg);
@@ -764,9 +829,14 @@ namespace PKLib_Data.Controllers
                 //----- SQL 查詢語法 -----
                 sql.AppendLine(" UPDATE Supplier_ExtendedInfo SET ");
                 sql.AppendLine("  Purchaser = @Purchaser");
+                //中國
+                sql.AppendLine("  , cn_Account = @cn_Account, cn_AccName = @cn_AccName, cn_Email = @cn_Email");
+                sql.AppendLine("  , cn_BankName = @cn_BankName, cn_BankID = @cn_BankID, cn_SaleID = @cn_SaleID, cn_State = @cn_State, cn_City = @cn_City");
+                //外匯
+                sql.AppendLine("  , ww_Account = @ww_Account, ww_AccName = @ww_AccName, ww_Tel = @ww_Tel, ww_Addr = @ww_Addr");
+                sql.AppendLine("  , ww_BankName = @ww_BankName, ww_BankBranch = @ww_BankBranch, ww_BankAddr = @ww_BankAddr, ww_Country = @ww_Country, ww_Code = @ww_Code");
                 sql.AppendLine("  , Update_Who = @Update_Who, Update_Time = GETDATE()");
                 sql.AppendLine(" WHERE (Data_ID = @DataID)");
-
 
                 //----- SQL 執行 -----
                 cmd.CommandText = sql.ToString();
@@ -774,6 +844,23 @@ namespace PKLib_Data.Controllers
                 cmd.Parameters.AddWithValue("Purchaser", instance.User_Account);
                 cmd.Parameters.AddWithValue("Update_Who", instance.Update_Who);
 
+                cmd.Parameters.AddWithValue("cn_Account", instance.cn_Account);
+                cmd.Parameters.AddWithValue("cn_AccName", instance.cn_AccName);
+                cmd.Parameters.AddWithValue("cn_Email", instance.cn_Email);
+                cmd.Parameters.AddWithValue("cn_BankName", instance.cn_BankName);
+                cmd.Parameters.AddWithValue("cn_BankID", instance.cn_BankID);
+                cmd.Parameters.AddWithValue("cn_SaleID", instance.cn_SaleID);
+                cmd.Parameters.AddWithValue("cn_State", instance.cn_State);
+                cmd.Parameters.AddWithValue("cn_City", instance.cn_City);
+                cmd.Parameters.AddWithValue("ww_Account", instance.ww_Account);
+                cmd.Parameters.AddWithValue("ww_AccName", instance.ww_AccName);
+                cmd.Parameters.AddWithValue("ww_Tel", instance.ww_Tel);
+                cmd.Parameters.AddWithValue("ww_Addr", instance.ww_Addr);
+                cmd.Parameters.AddWithValue("ww_BankName", instance.ww_BankName);
+                cmd.Parameters.AddWithValue("ww_BankBranch", instance.ww_BankBranch);
+                cmd.Parameters.AddWithValue("ww_BankAddr", instance.ww_BankAddr);
+                cmd.Parameters.AddWithValue("ww_Country", instance.ww_Country);
+                cmd.Parameters.AddWithValue("ww_Code", instance.ww_Code);
 
                 return db.ExecuteSql(cmd, DBTarget.PKSYS, out ErrMsg);
             }
