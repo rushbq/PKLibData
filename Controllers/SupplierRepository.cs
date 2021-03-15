@@ -281,7 +281,7 @@ namespace PKLib_Data.Controllers
                         , ISNULL(Info.Data_ID, 0) AS InfoID, ISNULL(Prof.Account_Name, '') AS User_Account, ISNULL(Prof.Display_Name, '') AS User_Name
                         , RTRIM(ERP.MA003) AS tw_AccName, ERP.MA028 AS tw_Account, ERP.MA027 AS tw_BankID, Bank.MO006 AS tw_BankName
                         , Info.cn_Account, Info.cn_AccName, Info.cn_Email, Info.cn_BankName
-                        , Info.cn_BankID, Info.cn_SaleID, Info.cn_State, Info.cn_City
+                        , Info.cn_BankID, Info.cn_SaleID, Info.cn_State, Info.cn_City, Info.cn_BankType
                         , Info.ww_Account, Info.ww_AccName, Info.ww_Tel, Info.ww_Addr
                         , Info.ww_BankName, Info.ww_BankBranch, Info.ww_BankAddr, Info.ww_Country, Info.ww_Code
                     FROM Param_Corp Corp WITH(NOLOCK)
@@ -383,6 +383,7 @@ namespace PKLib_Data.Controllers
                             cn_SaleID = item.Field<string>("cn_SaleID"),
                             cn_State = item.Field<string>("cn_State"),
                             cn_City = item.Field<string>("cn_City"),
+                            cn_BankType = item.Field<string>("cn_BankType"),
                             ww_Account = item.Field<string>("ww_Account"),
                             ww_AccName = item.Field<string>("ww_AccName"),
                             ww_Tel = item.Field<string>("ww_Tel"),
@@ -682,7 +683,7 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine("  Data_ID, Corp_UID, ERP_ID, Purchaser");
                 //中國
                 sql.AppendLine("  , cn_Account, cn_AccName, cn_Email");
-                sql.AppendLine("  , cn_BankName, cn_BankID, cn_SaleID, cn_State, cn_City");
+                sql.AppendLine("  , cn_BankName, cn_BankID, cn_SaleID, cn_State, cn_City, cn_BankType");
                 //外匯
                 sql.AppendLine("  , ww_Account, ww_AccName, ww_Tel, ww_Addr");
                 sql.AppendLine("  , ww_BankName, ww_BankBranch, ww_BankAddr, ww_Country, ww_Code");
@@ -691,7 +692,7 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine("  @NewID, @Corp_UID, @ERP_ID, @Purchaser");
                 //中國
                 sql.AppendLine("  , @cn_Account, @cn_AccName, @cn_Email");
-                sql.AppendLine("  , @cn_BankName, @cn_BankID, @cn_SaleID, @cn_State, @cn_City");
+                sql.AppendLine("  , @cn_BankName, @cn_BankID, @cn_SaleID, @cn_State, @cn_City, @cn_BankType");
                 //外匯
                 sql.AppendLine("  , @ww_Account, @ww_AccName, @ww_Tel, @ww_Addr");
                 sql.AppendLine("  , @ww_BankName, @ww_BankBranch, @ww_BankAddr, @ww_Country, @ww_Code");
@@ -714,6 +715,7 @@ namespace PKLib_Data.Controllers
                 cmd.Parameters.AddWithValue("cn_SaleID", instance.cn_SaleID);
                 cmd.Parameters.AddWithValue("cn_State", instance.cn_State);
                 cmd.Parameters.AddWithValue("cn_City", instance.cn_City);
+                cmd.Parameters.AddWithValue("cn_BankType", instance.cn_BankType);
                 cmd.Parameters.AddWithValue("ww_Account", instance.ww_Account);
                 cmd.Parameters.AddWithValue("ww_AccName", instance.ww_AccName);
                 cmd.Parameters.AddWithValue("ww_Tel", instance.ww_Tel);
@@ -831,7 +833,7 @@ namespace PKLib_Data.Controllers
                 sql.AppendLine("  Purchaser = @Purchaser");
                 //中國
                 sql.AppendLine("  , cn_Account = @cn_Account, cn_AccName = @cn_AccName, cn_Email = @cn_Email");
-                sql.AppendLine("  , cn_BankName = @cn_BankName, cn_BankID = @cn_BankID, cn_SaleID = @cn_SaleID, cn_State = @cn_State, cn_City = @cn_City");
+                sql.AppendLine("  , cn_BankName = @cn_BankName, cn_BankID = @cn_BankID, cn_SaleID = @cn_SaleID, cn_State = @cn_State, cn_City = @cn_City, cn_BankType = @cn_BankType");
                 //外匯
                 sql.AppendLine("  , ww_Account = @ww_Account, ww_AccName = @ww_AccName, ww_Tel = @ww_Tel, ww_Addr = @ww_Addr");
                 sql.AppendLine("  , ww_BankName = @ww_BankName, ww_BankBranch = @ww_BankBranch, ww_BankAddr = @ww_BankAddr, ww_Country = @ww_Country, ww_Code = @ww_Code");
@@ -852,6 +854,7 @@ namespace PKLib_Data.Controllers
                 cmd.Parameters.AddWithValue("cn_SaleID", instance.cn_SaleID);
                 cmd.Parameters.AddWithValue("cn_State", instance.cn_State);
                 cmd.Parameters.AddWithValue("cn_City", instance.cn_City);
+                cmd.Parameters.AddWithValue("cn_BankType", instance.cn_BankType);
                 cmd.Parameters.AddWithValue("ww_Account", instance.ww_Account);
                 cmd.Parameters.AddWithValue("ww_AccName", instance.ww_AccName);
                 cmd.Parameters.AddWithValue("ww_Tel", instance.ww_Tel);

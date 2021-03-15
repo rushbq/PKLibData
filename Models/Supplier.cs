@@ -124,6 +124,10 @@ namespace PKLib_Data.Models
         /// 中國:縣市
         /// </summary>
         public string cn_City { get; set; }
+        /// <summary>
+        /// 中國:收款人開戶行
+        /// </summary>
+        public string cn_BankType { get; set; }
 
         /// <summary>
         /// 外匯:收款人帳號
