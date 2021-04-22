@@ -87,7 +87,61 @@ namespace PKLib_Data.Controllers
             return _Users.AsQueryable();
 
         }
+        
 
+        /// <summary>
+        /// 取得部門主管Info
+        /// </summary>
+        /// <param name="deptID">部門ID</param>
+        /// <returns></returns>
+        public IQueryable<PKUsers> GetDeptSupervisor(string deptID)
+        {
+            //----- 宣告 -----
+            dbConn db = new dbConn();
+            List<PKUsers> _Users = new List<PKUsers>();
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                string sql = @"SELECT
+                    Prof.Account_Name ProfID, Prof.Display_Name ProfName, Prof.Guid ProfGuid
+                    , Prof.Email, Prof.NickName, Prof.Tel_Ext
+                    FROM User_Dept_Supervisor Info WITH (NOLOCK)
+                    INNER JOIN User_Profile Prof WITH (NOLOCK) ON Info.Account_Name = Prof.Account_Name
+                    WHERE (Info.DeptID = @DeptID) AND (Prof.Display = 'Y')
+                ";
+
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("DeptID", deptID);
+
+                //----- 資料取得 -----
+                using (DataTable DT = db.LookupDT(cmd, DBTarget.PKSYS, out ErrMsg))
+                {
+                    //LinQ 查詢
+                    var query = DT.AsEnumerable();
+
+                    //資料迴圈
+                    foreach (var item in query)
+                    {
+                        //加入項目
+                        var data = new PKUsers
+                        {
+                            ProfGuid = item.Field<string>("ProfGuid"),
+                            ProfID = item.Field<string>("ProfID"),
+                            ProfName = item.Field<string>("ProfName"),
+                            Email = item.Field<string>("Email"),
+                            NickName = item.Field<string>("NickName"),
+                            Tel_Ext = item.Field<string>("Tel_Ext")
+                        };
+
+                        //將項目加入至集合
+                        _Users.Add(data);
+                    }
+                }
+
+
+                //回傳集合
+                return _Users.AsQueryable();
+            }
+        }
 
         /// <summary>
         /// 取得人員組織 - 樹狀選單(for jQuery zTree)
