@@ -301,7 +301,7 @@ namespace PKLib_Data.Controllers
                         case (int)Common.ProdSearch.ItemKey:
                             if (!string.IsNullOrEmpty(item.Value))
                             {
-                                //關鍵字品名,品號
+                                //關鍵字品號
                                 sql.Append(" AND (");
                                 sql.Append("    (UPPER(Base.Model_No) LIKE UPPER(@ItemKey) + '%')");
                                 sql.Append(" )");
